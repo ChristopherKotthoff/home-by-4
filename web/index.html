@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HomeBy4</title>
+<style>
+/* The sky colours are registered so the browser can ease them over 1.5 s when the plan changes. */
+@property --s0{syntax:'<color>';inherits:true;initial-value:#1e2c63}
+@property --s1{syntax:'<color>';inherits:true;initial-value:#5a4a93}
+@property --s2{syntax:'<color>';inherits:true;initial-value:#d9708a}
+@property --s3{syntax:'<color>';inherits:true;initial-value:#f8b867}
+
+:root{
+  --paper:#ebf0f5; --paper2:#e0e7ef; --lift:#f8fafc;
+  --ink:#1a2a44; --ink2:#4d5e77; --rule:#c8d2de; --road:#b2bdca;
+  --skyblue:#2b6cb8; --sun:#f2b33d; --sunsoft:#fae3a8; --sunink:#5b4106; --dusk:#9a5a12;
+  --sans:"Avenir Next","Avenir","Helvetica Neue",-apple-system,"SF Pro Text",sans-serif;
+  --din:"DIN Condensed","DIN Alternate","Avenir Next Condensed","Arial Narrow",sans-serif;
+  --m:3.8rem;
+  --ease:cubic-bezier(.65,0,.25,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:clamp(13px,min(1.15vw,1.9vh),26px);background:var(--paper)}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-variant-numeric:tabular-nums;
+  height:100vh;overflow:hidden;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:inherit}
+[hidden]{display:none !important}
+:focus-visible{outline:3px solid var(--skyblue);outline-offset:3px;border-radius:4px}
+.sky :focus-visible{outline-color:#fff}
+.app{height:100vh;display:flex;flex-direction:column}
+
+/* sky: the real sky at the time you get home */
+.sky{position:relative;flex:none;color:#fff;padding:.9rem var(--m) 3.1rem;
+  background:linear-gradient(180deg,var(--s0) 0,var(--s1) 50%,var(--s2) 84%,var(--s3) 100%);
+  transition:padding-bottom .7s var(--ease),--s0 1.5s var(--ease),--s1 1.5s var(--ease),--s2 1.5s var(--ease),--s3 1.5s var(--ease)}
+.solo .sky{padding-bottom:6rem}
+.sky::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(8,20,52,.26),rgba(8,20,52,.12) 62%,rgba(8,20,52,0))}
+.sky > *{position:relative}
+.bar{display:flex;align-items:center;justify-content:space-between;height:2.7rem}
+.logo{font-size:1.25rem;font-weight:700;letter-spacing:-.005em}
+.tabs{display:flex;gap:1.9rem}
+.tab{background:none;border:0;border-bottom:2px solid transparent;color:rgba(255,255,255,.82);padding:.2rem .05rem .3rem;text-align:left;line-height:1.15}
+.tab .d{display:block;font-size:1.02rem;font-weight:600}
+.tab .g{display:block;font-size:.8rem;font-weight:500;opacity:.85}
+.tab:hover{color:#fff}
+.tab.sel{color:#fff;border-bottom-color:#fff}
+.corner{display:flex;align-items:center;gap:1.1rem;font-size:.85rem}
+.corner .mode{color:rgba(255,255,255,.82)}
+.textbtn{background:none;border:0;color:#fff;font-size:.85rem;font-weight:600;text-decoration:underline;text-underline-offset:.2em;text-decoration-color:rgba(255,255,255,.55);padding:.2rem .1rem}
+.textbtn:hover{text-decoration-color:#fff}
+
+.hero{margin-top:1.1rem}
+.date{font-size:1.05rem;font-weight:500;color:rgba(255,255,255,.9);min-height:1.3rem}
+.head{display:flex;align-items:baseline;white-space:nowrap;font-weight:500;font-size:2.35rem;transition:font-size .7s var(--ease);line-height:1.05;margin-top:.6rem;letter-spacing:-.01em}
+.head .pre{margin-right:.7rem}
+.clock{font-family:var(--din);font-weight:700;font-size:6.9rem;line-height:.82;letter-spacing:.005em;display:inline-flex;align-items:baseline;transition:font-size .7s var(--ease)}
+.solo .head{font-size:2.9rem}.solo .clock{font-size:9rem}.solo .hero{margin-top:2rem}.solo .head{margin-top:1rem}.solo .sub{font-size:1.35rem}
+.clock .ap{font-size:.4em;margin-left:.14em;letter-spacing:.02em}
+.sub{margin-top:.8rem;font-size:1.2rem;font-weight:500;line-height:1.35;min-height:1.6rem;max-width:62rem}
+.app.down .clock{display:none}
+
+/* route */
+.stage{position:relative;flex:1;min-height:0;display:flex;flex-direction:column;padding:0 var(--m)}
+.route{position:relative;flex:none;padding-top:1rem}
+.axis{position:relative;height:1.25rem}
+.axis span{position:absolute;transform:translateX(-50%);top:0;white-space:nowrap;font-family:var(--din);font-weight:700;font-size:1rem;color:var(--ink2);letter-spacing:.03em}
+.sunset{position:absolute;top:1rem;bottom:0;width:0;border-left:1.5px dashed #d98a2b;z-index:5;pointer-events:none}
+.sunset span{position:absolute;top:0;left:.4rem;font-size:.82rem;font-weight:600;color:var(--dusk);white-space:nowrap}
+.sunset.left span{left:auto;right:.4rem}
+.row{position:relative;transition:opacity .8s ease}
+.rl{display:none;height:1.15rem;font-size:.82rem;font-weight:600;color:var(--ink2)}
+.route.both .rl{display:block}
+.route.both .row.before{opacity:.5}
+.row.after{max-height:0;opacity:0;overflow:hidden;transition:max-height .7s var(--ease),opacity .7s ease}
+.row.after.on{max-height:9rem;opacity:1;overflow:visible}
+.track{position:relative;height:3.5rem;margin-top:.3rem;border-radius:.4rem;transition:height .6s var(--ease);
+  background:linear-gradient(to right,rgba(26,42,68,.09) 1px,transparent 1px) 0 0/calc(100%/13) 100%,var(--paper2)}
+.both .track{height:4.3rem}
+.both .rl{height:1rem}
+.solo .track{height:8rem}
+
+/* blocks on the route */
+.blk{position:absolute;opacity:0;transition:left 1.2s var(--ease),width 1.2s var(--ease),opacity .5s ease,background-color .8s,border-color .8s}
+.blk.late{transition:left 1.2s var(--ease) .35s,width 1.2s var(--ease) .35s,opacity .6s ease .35s,background-color .8s,border-color .8s}
+.blk.show{opacity:1}
+.blk.out{opacity:0;transition:opacity .3s ease}
+.blk.meeting{top:.35rem;bottom:.35rem;z-index:3;border-radius:.3rem;padding:.2rem .45rem;overflow:hidden;display:flex;flex-direction:column;justify-content:center;line-height:1.2;
+  background:var(--ink);border:1.5px solid var(--ink);color:#f4f7fb}
+.blk.meeting.flex{background:var(--lift);color:var(--ink)}
+.blk.meeting .n{font-size:.95rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.blk.meeting .t{font-size:.82rem;font-weight:500;white-space:nowrap}
+.blk.meeting .t .ap{font-size:.85em;margin-left:.2em}
+.blk.meeting .w{font-size:.75rem;font-weight:600;white-space:nowrap;overflow:hidden}
+.blk.meeting.moved{color:var(--sunink)}
+.blk.meeting.moved.pot{background:var(--sunsoft);border-color:#d9a22c;border-style:dashed}
+.blk.meeting.moved.ok{background:var(--sun);border-color:#c98e14;border-style:solid}
+.solo .blk.meeting .n{font-size:1.2rem}.solo .blk.meeting .t{font-size:1.02rem}.solo .blk.dead{height:2.3rem;margin-top:-1.15rem}.solo .blk.travel{height:1.15rem;margin-top:-.575rem}
+.blk.travel{z-index:2;top:50%;height:.95rem;margin-top:-.475rem;background:var(--road);border-radius:2px}
+.blk.travel::after{content:"";position:absolute;left:3px;right:3px;top:50%;margin-top:-1px;height:2px;
+  background:repeating-linear-gradient(90deg,#f1f4f8 0 6px,transparent 6px 12px)}
+.blk.dead{z-index:2;top:50%;height:1.7rem;margin-top:-.85rem;border-radius:2px;display:flex;align-items:center;justify-content:center;
+  background:repeating-linear-gradient(135deg,rgba(26,42,68,.28) 0 1.5px,transparent 1.5px 6px)}
+.blk.dead span{position:absolute;left:50%;top:100%;transform:translateX(-50%);margin-top:.2rem;font-size:.76rem;font-weight:600;color:var(--ink2);white-space:nowrap}
+.blk.flag{z-index:6;top:-.15rem;bottom:0;width:0 !important;overflow:visible;border-left:2px solid var(--ink)}
+.blk.flag span{position:absolute;top:0;left:0;white-space:nowrap;background:var(--ink);color:#fff;font-size:.82rem;font-weight:600;padding:.12rem .55rem .12rem .4rem;
+  clip-path:polygon(0 0,100% 0,calc(100% - .35rem) 50%,100% 100%,0 100%)}
+.blk.flag span b{font-family:var(--din);font-size:1.12rem;font-weight:700;letter-spacing:.02em;margin-left:.2em}
+.blk.flag.left span{left:auto;right:0;padding:.12rem .4rem .12rem .55rem;clip-path:polygon(0 0,100% 0,100% 100%,0 100%,.35rem 50%)}
+.blk.flag.a{border-left-color:var(--skyblue)} .blk.flag.a span{background:var(--skyblue)}
+.blk.gain{z-index:1;top:0;bottom:0;border-radius:.3rem;background:rgba(43,108,184,.15);color:#1f5496;font-weight:700;font-size:1.02rem;
+  display:flex;align-items:flex-end;justify-content:center;padding-bottom:.45rem;white-space:nowrap}
+
+/* the zone under the route */
+.zone{position:relative;flex:1;min-height:0;padding-top:1.3rem}
+.btn{background:transparent;border:1.5px solid var(--ink);color:var(--ink);border-radius:.4rem;font-size:1rem;font-weight:600;padding:.5rem 1.15rem;white-space:nowrap;transition:background-color .15s,color .15s}
+.btn:hover:not(:disabled){background:rgba(26,42,68,.08)}
+.btn.primary{background:var(--ink);color:#fff}
+.btn.primary:hover:not(:disabled){background:#2a4066}
+.btn.big{font-size:1.4rem;padding:.8rem 1.9rem;border-radius:.45rem}
+.btn:disabled{opacity:.35;cursor:not-allowed}
+.link{background:none;border:0;font-size:.95rem;font-weight:600;color:var(--skyblue);text-decoration:underline;text-underline-offset:.2em;padding:.3rem .1rem}
+.hint{font-size:.9rem;color:var(--ink2)}
+.start{display:flex;align-items:center;gap:1.2rem;padding-top:.5rem}
+.empty{font-size:1.25rem;color:var(--ink2);padding-top:.5rem}
+
+.moves{max-width:66rem}
+.skip{max-width:66rem;margin-top:.8rem;font-size:.95rem;color:var(--ink2)}
+.mv{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:1.4rem;min-height:3.5rem;border-top:1px solid var(--rule)}
+.mv:last-of-type{border-bottom:1px solid var(--rule)}
+.mv .line{font-size:1.2rem;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mv .line .who{color:var(--ink);font-weight:700}
+.mv .line b{color:var(--ink);font-weight:700;background:var(--sunsoft);padding:.05rem .3rem;border-radius:.2rem}
+.mv.ok .line b{background:var(--sun)}
+.mv .st{font-size:1rem;font-weight:600;color:#1f5496;display:flex;align-items:center;gap:.4rem;white-space:nowrap}
+.mv .st svg{width:1em;height:1em}
+.after-moves{padding-top:.7rem;display:flex;gap:1.4rem;align-items:center}
+
+/* the call */
+.call{max-width:66rem;display:flex;flex-direction:column;gap:.9rem}
+.sim{position:absolute;top:1.5rem;right:0;width:24rem;display:flex;flex-direction:column;gap:.35rem}
+.simh{font-size:.88rem;font-weight:600;color:var(--ink2)}
+.siml{display:flex;flex-direction:column;justify-content:flex-start;gap:.15rem;font-size:.95rem;line-height:1.4;color:var(--ink2)}
+.siml div{white-space:nowrap}
+.siml .tot{margin-top:.3rem;font-size:1.05rem;font-weight:700;color:#1f5496}
+.cal{position:absolute;right:var(--m);bottom:.6rem;display:flex;align-items:center;gap:.9rem;font-size:.9rem;color:var(--ink2)}
+.cal .link{font-size:.9rem}
+.call h2{font-size:1.7rem;font-weight:700;line-height:1.15;letter-spacing:-.005em}
+.chead{display:flex;align-items:baseline;gap:1rem}
+.tag{font-size:.82rem;font-weight:600;color:var(--ink2);border:1px solid var(--rule);border-radius:.3rem;padding:.1rem .5rem;white-space:nowrap}
+.call .csub{font-size:1.05rem;color:var(--ink2);margin-top:.2rem}
+.caps{display:flex;flex-direction:column;gap:.8rem}
+.cap{border-left:4px solid var(--rule);padding-left:1rem;transition:opacity .4s}
+.cap.person{border-left-color:var(--skyblue)}
+.cap .w{font-size:.85rem;font-weight:600;color:var(--ink2)}
+.cap .x{font-size:1.85rem;line-height:1.2;font-weight:500;color:var(--ink2);letter-spacing:-.005em}
+.cap.person .x{color:var(--ink);font-weight:600}
+.cap.old{opacity:.45}
+.cap.fresh{animation:in .3s ease both}
+@keyframes in{from{opacity:0}to{opacity:1}}
+.cap.wait .x{color:var(--ink2)}
+.cout{display:flex;align-items:center;gap:1.2rem;min-height:2.6rem}
+.call.res h2{font-size:2.7rem;letter-spacing:-.015em}
+.call.res .csub{font-size:1.5rem;color:var(--ink);margin-top:.5rem}
+.call.res .csub b{font-weight:700;background:var(--sunsoft);padding:.05rem .35rem;border-radius:.25rem}
+.call.res .cout{margin-top:.7rem}
+
+footer{flex:none;display:flex;justify-content:space-between;gap:2rem;padding:.7rem var(--m) .8rem;font-size:.82rem;color:var(--ink2);border-top:1px solid var(--rule)}
+footer kbd{font:inherit;font-weight:600;color:var(--ink)}
+.toast{position:fixed;left:50%;bottom:3.2rem;transform:translateX(-50%);background:var(--ink);color:#fff;padding:.6rem 1.2rem;border-radius:.4rem;font-size:1rem;z-index:50;opacity:0;pointer-events:none;transition:opacity .3s}
+.toast.on{opacity:1}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms !important;transition-delay:0s !important;animation-duration:.01ms !important}
+}
+</style>
+</head>
+<body>
+<div class="app solo" id="app">
+  <header class="sky" id="sky">
+    <div class="bar">
+      <div class="logo">HomeBy4</div>
+      <nav class="tabs" id="week" aria-label="Days of the week"></nav>
+      <div class="corner"><span class="mode" id="mode"></span><button class="textbtn" id="reset" type="button" title="Clear calls and confirmations (r)">Start over</button></div>
+    </div>
+    <div class="hero" id="hero">
+      <p class="date" id="h-date"></p>
+      <h1 class="head" aria-live="polite"><span class="pre" id="h-pre"></span><span class="clock"><span id="h-t">--:--</span><span class="ap" id="h-ap"></span></span><span id="h-post"></span></h1>
+      <p class="sub" id="h-sub"></p>
+    </div>
+  </header>
+
+  <main class="stage" id="stage">
+    <section class="route" id="route">
+      <div class="axis" id="axis"></div>
+      <div class="sunset" id="sunset"><span></span></div>
+      <div class="row before" id="row-b"><div class="rl">As booked</div><div class="track" id="tr-before"></div></div>
+      <div class="row after" id="row-a"><div class="rl">With the moves</div><div class="track" id="tr-after"></div></div>
+    </section>
+
+    <section class="zone" id="zone">
+      <div class="start" id="z-cta"></div>
+      <div id="z-plan" hidden>
+        <div class="moves" id="z-moves"></div>
+        <p class="skip" id="z-skip" hidden></p>
+      </div>
+      <div class="call" id="z-call" hidden>
+        <div><div class="chead"><h2 id="cc-title" aria-live="polite"></h2><span class="tag" id="cc-tag" hidden></span></div><p class="csub" id="cc-sub"></p></div>
+        <div class="caps" id="caps"></div>
+        <div class="cout" id="cc-out"></div>
+        <div class="sim" id="sim" hidden><p class="simh">Asking the others (simulated)</p><div class="siml" id="sim-l"></div></div>
+      </div>
+    </section>
+    <div class="cal" id="cal" hidden><span id="cal-t"></span><button class="link" id="cal-reset" type="button">Put my calendar back</button></div>
+  </main>
+
+  <footer>
+    <span>Driving times from OpenStreetMap routing, sunset at your home. Olin's call is real; the other people are fictional and their calls are simulated.</span>
+    <span>Press <kbd>Space</kbd> for the next step, <kbd>r</kbd> to start over.</span>
+  </footer>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(() => {
+'use strict';
+const AX0 = 7*60, AX1 = 20*60, SPAN = AX1-AX0;
+const $ = s => document.querySelector(s);
+const esc = s => String(s==null?'':s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const mm = s => { const [h,m] = String(s).split(':'); return (+h)*60 + (+m); };
+const pad = n => String(n).padStart(2,'0');
+const pos = t => (t-AX0)/SPAN*100;
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const REDUCED = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+const BASE = location.protocol === 'file:' ? 'http://localhost:8787' : '';
+const DAYN = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+/* 12-hour times: "6:35 pm", with the pm set smaller when html is wanted */
+const t12 = (s, html) => {
+  const x = typeof s === 'number' ? s : mm(s); const h = Math.floor(x/60), m = Math.round(x%60);
+  const t = (h%12||12) + ':' + pad(m), ap = h >= 12 ? 'pm' : 'am';
+  return html ? `${t}<span class="ap">${ap}</span>` : `${t} ${ap}`;
+};
+const hmin = x => { x = Math.round(x); const h = Math.floor(x/60); return (h%12||12) + ':' + pad(x%60); };
+const hour12 = h => (h%12||12);
+const rng = (a, b) => {
+  const A = mm(a), B = mm(b), ha = Math.floor(A/60), hb = Math.floor(B/60);
+  const f = x => { const h = Math.floor(x/60), m = x%60; return hour12(h) + (m ? ':' + pad(m) : ''); };
+  const ap = h => h >= 12 ? 'pm' : 'am';
+  return (ap(ha) === ap(hb) ? `${f(A)}–${f(B)} ${ap(hb)}` : `${f(A)} ${ap(ha)}–${f(B)} ${ap(hb)}`);
+};
+const dur = x => { x = Math.round(x); const h = Math.floor(x/60), m = x%60; return h ? (m ? `${h} h ${m} min` : `${h} h`) : `${m} min`; };
+
+const S = { st:null, date:'2027-10-12', call:null, ctx:null, ctxKind:null, result:null, starting:false, settling:false,
+  showCall:false, fake:false, simDone:false, sim:null, planned:new Set(), tries:0, errs:0, lastDate:null, seenConf:null, newly:new Set(), wasPlanned:false };
+
+/* ---------- api ---------- */
+async function jf(url, opts, ms=4000){
+  const c = new AbortController(); const t = setTimeout(() => c.abort(), ms);
+  try{
+    const r = await fetch(url, Object.assign({}, opts, {signal:c.signal}));
+    if(!r.ok) throw new Error(r.status + ' ' + (await r.text()).slice(0,140));
+    return await r.json();
+  } finally { clearTimeout(t); }
+}
+async function loadState(animate){
+  let st;
+  try{ st = await jf(BASE + '/api/state'); }
+  catch(e){
+    if(S.st){ toast('Server not answering: ' + e.message); return; }
+    showDown(); clearTimeout(S.dt); S.dt = setTimeout(() => loadState(false), 3000); return;
+  }
+  $('#app').classList.remove('down');
+  S.st = st;
+  if(!S.simDone && (st.calls||[]).some(c => c.simulated)) S.simDone = true;
+  if(!st.days[S.date]){ S.date = Object.keys(st.days)[0]; }
+  if(!S.hashDone){ S.hashDone = true; applyHash(); }
+  renderAll(animate);
+  adoptCall();
+}
+function showDown(){
+  $('#app').classList.add('down'); setSky(0);
+  $('#h-date').textContent = ''; $('#h-pre').textContent = 'The HomeBy4 server isn’t running.'; $('#h-post').textContent = '';
+  $('#h-sub').textContent = 'Start it with python3 server.py.';
+  $('#stage').hidden = true; $('#week').innerHTML = '';
+}
+function applyHash(){
+  const m = /act=(\w+)/.exec(location.hash||''); if(!m) return;
+  if(m[1] === '2' || m[1] === '3') S.planned.add(S.date);
+  if(m[1] === '3'){
+    const mv = sortedMoves(S.st.days[S.date])[0] || {};
+    const f = firstName(mv.person || meetById(mv.id).person);
+    S.fake = true; S.showCall = true; S.ctx = mv; S.ctxKind = 'ask';
+    S.call = {id:'demo', meeting_id:mv.id, person:mv.person || meetById(mv.id).person, status:'in_progress', kind:'ask', mode:'mock', outcome:null, turns:[
+      {speaker:'agent', text:`Hi ${f}, I’m an AI assistant calling for Chris. Do you have a minute?`},
+      {speaker:'person', text:'Sure, go ahead.'},
+      {speaker:'agent', text:`Chris is rearranging Tuesday. Which times between 1 and 4 pm work for your ${kindWord(mv.id) || 'meeting'}?`}]};
+  }
+}
+function adoptCall(){
+  if(S.call || S.starting || S.fake) return;
+  const act = (S.st.calls||[]).find(c => c.status === 'queued' || c.status === 'in_progress' || c.status === 'parsing');
+  if(act){ S.call = act; S.ctx = null; S.tries = 0; S.showCall = true; const md = meetById(act.meeting_id).date; if(md) S.planned.add(md); renderAll(false); schedulePoll(); }
+}
+
+/* ---------- helpers on state ---------- */
+const week = () => S.st.week || {};
+const meetById = id => (week().meetings||[]).find(m => m.id === id) || {};
+const placeName = id => id == null ? 'remote' : ((week().places||{})[id] || {}).name || id;
+const placeShort = id => placeName(id).split(' · ')[0].replace(/ (Coffee Roasters|Coffee|Marketplace|Center|Manufactory|Café|Cafe)$/i, '');
+const firstName = n => String(n||'').split(' ')[0];
+const kindWord = id => { const t = meetById(id).title || ''; const i = t.indexOf(':'); return (i > 0 ? t.slice(0,i) : t.replace(/\s*\(.*\)/, '')).toLowerCase(); };
+const confirmed = () => S.st.confirmed || {};
+const moveOf = id => { const d = S.st.days[S.date]; return d && (d.moves||[]).find(m => m.id === id); };
+const stageOf = m => m.stage || (confirmed()[m.id] && confirmed()[m.id].fixed_start ? 'confirmed' : 'proposed');
+const isConf = id => { const m = moveOf(id); if(m && m.stage) return m.stage === 'confirmed'; return !!(confirmed()[id] && confirmed()[id].fixed_start); };
+const isActive = () => !!(S.call && (S.call.status === 'queued' || S.call.status === 'in_progress' || S.call.status === 'parsing'));
+const busy = () => S.starting || S.settling || isActive();
+const dates = () => {
+  const w = week().window; const out = [];
+  if(w){ const a = new Date(w.start+'T12:00:00Z'); for(let i=0;i<5;i++){ out.push(new Date(a.getTime()+i*864e5).toISOString().slice(0,10)); } }
+  return out.length ? out : Object.keys(S.st.days).sort();
+};
+const dateObj = d => new Date(d+'T12:00:00Z');
+const dayName = d => DAYN[dateObj(d).getUTCDay()];
+const dateLong = d => dateObj(d).toLocaleDateString('en-US', {weekday:'long', month:'long', day:'numeric', timeZone:'UTC'});
+const sunsetOf = d => { const s = S.st.days[d] && S.st.days[d].sunset; return s ? mm(s) : 18*60 + 38 - (dateObj(d).getUTCDate() - 12) * 2; };   // real sunset at home from the server; else 6:38 pm on Tue 12 Oct, a little earlier each day
+const gainOf = d => { const b = d.before.home_at, a = d.after.home_at; return (b && a) ? mm(b)-mm(a) : (d.saved_min||0); };
+const sortedMoves = d => (d.moves||[]).slice().sort((a,b) => Math.abs(mm(b.from_start)-mm(b.to_start)) - Math.abs(mm(a.from_start)-mm(a.to_start)));
+function dayInfo(date){
+  const d = S.st.days[date], mv = sortedMoves(d), cf = confirmed();
+  const nconf = mv.filter(m => isConf(m.id)).length;
+  const touched = Object.keys(cf).some(id => meetById(id).date === date);
+  return {d, mv, nconf, all: mv.length > 0 && nconf === mv.length, planned: S.planned.has(date) || nconf > 0 || touched};
+}
+const nextMove = () => { const I = dayInfo(S.date); return I.mv.find(m => stageOf(m) !== 'confirmed'); };
+const kindOf = m => stageOf(m) === 'asked' ? 'inform' : 'ask';
+const names = ms => { const n = ms.map(m => firstName(m.person || meetById(m.id).person)); return n.length > 1 ? n.slice(0,-1).join(', ') + ' and ' + n[n.length-1] : n[0] || ''; };
+const tri = id => ((S.st && S.st.triage) || {})[id] || {};
+const labelOf = id => { const m = meetById(id), t = m.title || id, i = t.indexOf(':'); return i > 0 ? `${firstName(m.person)}’s ${t.slice(0, i).toLowerCase()}` : t.replace(/\s*\(.*\)/, ''); };
+const atPlace = id => id == null ? '' : ' at ' + placeShort(id);
+
+/* ---------- the sky ---------- */
+const PAL = {
+  dusk:  ['#1e2c63','#5a4a93','#d9708a','#f8b867'],
+  gold:  ['#2a4f92','#5c80ba','#dda77f','#f7d18e'],
+  clear: ['#1a559f','#3a82d1','#78b2ea','#c2e1f6']
+};
+const hex = h => [1,3,5].map(i => parseInt(h.slice(i, i+2), 16));
+const mix = (a, b, k) => { const A = hex(a), B = hex(b); return '#' + A.map((v, i) => pad(Math.round(v + (B[i]-v)*k).toString(16))).join(''); };
+function setSky(k){
+  k = Math.max(0, Math.min(1, k));
+  const [p, q, f] = k < .5 ? [PAL.dusk, PAL.gold, k/.5] : [PAL.gold, PAL.clear, (k-.5)/.5];
+  const sky = $('#sky'); for(let i = 0; i < 4; i++) sky.style.setProperty('--s' + i, mix(p[i], q[i], f));
+}
+
+/* ---------- render ---------- */
+function renderAll(animate){ renderMode(); renderWeek(); renderDay(animate); renderZone(); renderCal(); }
+function renderMode(){ $('#mode').textContent = S.st.mode === 'live' ? 'Live call: ' + ((S.st.live_meetings||[]).map(id => ((S.st.week.meetings.find(m => m.id === id)||{}).person||'').split(' ')[0]).join(', ') || 'none') : 'Simulated calls'; }
+function renderWeek(){
+  const box = $('#week'); box.innerHTML = '';
+  for(const date of dates()){
+    const d = S.st.days[date]; if(!d) continue;
+    const g = gainOf(d), el = document.createElement('button');
+    el.type = 'button'; el.className = 'tab' + (date === S.date ? ' sel' : '');
+    el.setAttribute('aria-current', date === S.date ? 'date' : 'false');
+    el.title = g > 0 ? `${dateLong(date)}: home ${dur(g)} earlier` : dateLong(date);
+    el.innerHTML = `<span class="d">${dayName(date)}</span><span class="g">${g > 0 ? dur(g) : 'no change'}</span>`;
+    el.onclick = () => { el.blur(); selectDay(date); };
+    box.appendChild(el);
+  }
+}
+function selectDay(date){
+  if(date === S.date || !S.st.days[date]) return;
+  S.date = date; renderAll(false);
+}
+
+function animNum(el, target, animate, fmt, from0, ms){
+  cancelAnimationFrame(el._raf);
+  if(from0) el._v = 0;
+  const from = el._v == null ? target : el._v;
+  if(REDUCED || !animate || from === target){ el._v = target; el.textContent = fmt(target); return; }
+  const t0 = performance.now(), D = ms || 1500;
+  const step = now => {
+    let k = Math.min(1, (now-t0)/D); k = k<.5 ? 4*k*k*k : 1-Math.pow(-2*k+2,3)/2;
+    el._v = from + (target-from)*k; el.textContent = fmt(el._v);
+    if(k < 1) el._raf = requestAnimationFrame(step); else { el._v = target; el.textContent = fmt(target); }
+  };
+  el._raf = requestAnimationFrame(step);
+}
+
+function sync(track, items, animate){
+  const els = track._els || (track._els = {}); const seen = new Set();
+  for(const it of items){
+    seen.add(it.key); let e = els[it.key];
+    const fin = () => { e.style.left = it.left + '%'; e.style.width = it.width + '%'; };
+    if(!e){
+      e = els[it.key] = document.createElement('div');
+      const f = it.from || it;
+      e.style.left = f.left + '%'; e.style.width = f.width + '%';
+      e.className = 'blk ' + it.cls + (animate ? ' late' : '');
+      e.innerHTML = it.html; e._h = it.html; track.appendChild(e);
+      void e.offsetWidth; e.classList.add('show');
+      if(it.from){ void e.offsetWidth; fin(); }
+    }else{
+      e.className = 'blk show ' + it.cls;
+      if(it.from){ e.style.transition = 'none'; e.style.left = it.from.left + '%'; e.style.width = it.from.width + '%'; void e.offsetWidth; e.style.transition = ''; }
+      fin();
+      if(e._h !== it.html){ e.innerHTML = it.html; e._h = it.html; }
+    }
+    e.title = it.title || '';
+  }
+  for(const k in els) if(!seen.has(k)){
+    const e = els[k]; delete els[k]; e.className = 'blk out ' + (e.className.match(/\b(meeting|travel|dead|flag|gain)\b/)||[''])[0];
+    setTimeout(() => e.remove(), 450);
+  }
+}
+function items(day, other, which, TW, replay){
+  const out = [], cnt = {};
+  const orig = {}; for(const e of (other.events||[])) orig[e.id] = e;
+  for(const s of day.segments){
+    const a = mm(s.start), b = mm(s.end), L = pos(a), W = pos(b) - pos(a), len = b - a, px = W/100*TW;
+    const base = {left:L, width:W};
+    if(s.type === 'meeting'){
+      const mt = meetById(s.id), ev = (day.events||[]).find(e => e.id === s.id) || {};
+      const place = s.place !== undefined ? s.place : ev.place;
+      const o = orig[s.id]; const moved = which === 'after' && o && (o.start !== s.start || (o.place||null) !== (place||null));
+      const done = isConf(s.id);
+      const person = mt.person || ev.person || s.id;
+      const cls = `meeting ${mt.flexible ? 'flex' : 'fixed'}` + (moved ? ' moved ' + (done ? 'ok' : 'pot') : '');
+      const it = Object.assign(base, {key:'m:'+s.id, cls,
+        title:`${person}, ${t12(s.start)} to ${t12(s.end)}${atPlace(place)}${moved ? ' (was ' + t12(o.start) + ')' : ''}` + (tri(s.id).reason ? `. ${tri(s.id).reason}` : ''),
+        html: px < 52 ? '' : `<div class="n">${esc(firstName(person))}</div><div class="t">${t12(s.start, true)}</div>` + (moved ? `<div class="w">was ${hmin(mm(o.start))}</div>` : '')});
+      if(moved && (replay || S.newly.has(s.id))) it.from = {left:pos(mm(o.start)), width:pos(mm(o.start) + (mm(s.end)-mm(s.start))) - pos(mm(o.start))};
+      out.push(it);
+    }else if(s.type === 'travel' || s.type === 'dead'){
+      const pair = s.type === 'travel' ? `${s.from}>${s.to}` : '';
+      const k = s.type + pair; cnt[k] = (cnt[k]||0) + 1;
+      out.push(Object.assign(base, {key:`${s.type}:${pair}#${cnt[k]}`, cls:s.type,
+        html: s.type === 'dead' && px >= 58 ? `<span>${len} min gap</span>` : '',
+        title:s.type === 'travel' ? `Drive from ${placeShort(s.from)} to ${placeShort(s.to)}, ${len} min` : `${len} min gap`}));
+    }
+  }
+  const h = mm(day.home_at), side = (100 - pos(h))/100*TW < 120 ? ' left' : '';
+  out.push({key:'flag', cls:'flag' + (which === 'after' ? ' a' : '') + side, left:pos(h), width:0, html:`<span>Home<b>${hmin(h)}</b> ${h >= 720 ? 'pm' : 'am'}</span>`});
+  return out;
+}
+
+function renderDay(animate){
+  const I = dayInfo(S.date), d = I.d, b = d.before, a = d.after;
+  const confNow = new Set(I.mv.filter(m => isConf(m.id)).map(m => m.id));
+  if(S.lastDate !== S.date){
+    animate = false; S.lastDate = S.date; S.seenConf = confNow; S.wasPlanned = I.planned;
+    for(const id of ['tr-before','tr-after']){ const t = $('#'+id); t.innerHTML = ''; t._els = {}; }
+    $('#h-t')._v = null; $('#hero')._k = null;
+  }
+  S.newly = new Set([...confNow].filter(id => !S.seenConf.has(id))); S.seenConf = confNow;
+  const entering = I.planned && !S.wasPlanned; S.wasPlanned = I.planned;
+  $('#stage').hidden = false;
+
+  /* axis and sunset marker */
+  const ax = $('#axis'); if(!ax.firstChild) for(let h = 8; h <= 20; h += 2){ const s = document.createElement('span'); s.style.left = pos(h*60) + '%'; s.textContent = hour12(h) + (h === 8 ? ' am' : h === 12 || h === 20 ? ' pm' : ''); ax.appendChild(s); }
+  const ss = sunsetOf(S.date), sun = $('#sunset');
+  sun.style.left = pos(ss) + '%'; sun.classList.toggle('left', pos(ss) > 90); sun.firstChild.textContent = 'Sunset ' + t12(ss);
+  const route = $('#route'); route.classList.toggle('both', I.planned); $('#app').classList.toggle('solo', !I.planned && !(S.showCall && (S.call || S.starting)));
+  const TW = $('#tr-before').clientWidth || 1200;
+
+  /* headline, sub, sky */
+  const phase = !I.planned ? 'before' : (I.all ? 'done' : 'plan');
+  const back = mm(b.home_at) - mm(a.home_at), lost = b.travel_min + b.dead_min;
+  const open = I.mv.filter(m => !isConf(m.id));
+  const gainful = phase !== 'before' && back > 0;
+  const homeMin = mm(phase === 'before' || !gainful ? b.home_at : a.home_at);
+  const daylight = ss - mm(a.home_at);
+  const key = phase + '|' + names(open) + '|' + back;
+  $('#h-date').textContent = dateLong(S.date);
+  $('#h-pre').textContent = phase === 'plan' && gainful ? 'Home at' : 'You get home at';
+  $('#h-post').textContent = phase === 'plan' && gainful ? `, if ${names(open)} can move.` : '.';
+  const ap = homeMin >= 720 ? 'pm' : 'am'; $('#h-ap').textContent = ap;
+  animNum($('#h-t'), homeMin, animate, hmin, false, 1500);
+  if(phase === 'before') setSky(0);
+  else if(!gainful) setSky(0);
+  else {
+    const e = Math.max(0, Math.min(1, (ss - homeMin) / 140));
+    const score = I.mv.map(m => stageOf(m) === 'confirmed' ? 1 : stageOf(m) === 'asked' ? .5 : 0);
+    const p = score.length ? score.reduce((x, y) => x + y, 0) / score.length : 1;
+    setSky(e * (.35 + .65 * p));
+  }
+  if($('#hero')._k !== key){
+    $('#hero')._k = key;
+    const sub = $('#h-sub');
+    if(phase === 'before') sub.textContent = `Sunset is ${t12(ss)}.` + (lost > 0 ? ` ${dur(lost)} of this day is driving or gaps too short to use.` : '');
+    else if(!gainful) sub.textContent = 'Nothing to gain on this day.';
+    else{
+      sub.innerHTML = (phase === 'done' ? `Confirmed: ${esc(names(I.mv))}. ` : '') + `<span id="h-back"></span> back` + (daylight > 0 ? `, with <span id="h-day"></span> of daylight left` : '') + '.';
+      const bk = $('#h-back'); animNum(bk, back, animate || entering, dur, true, 1500);
+      const dl = $('#h-day'); if(dl) animNum(dl, daylight, animate || entering, dur, true, 1500);
+    }
+  }
+
+  const ra = $('#row-a'); ra.classList.toggle('on', I.planned);
+  sync($('#tr-before'), items(b, a, 'before', TW), animate);
+  const ia = items(a, b, 'after', TW, entering);
+  const ha = mm(a.home_at), hb = mm(b.home_at);
+  if(hb > ha){ const gw = pos(hb)-pos(ha); ia.push({key:'gain', cls:'gain', left:pos(ha), width:gw, html: gw/100*TW >= 110 ? `${dur(hb-ha)} back` : '', title:`Home ${dur(hb-ha)} earlier`}); }
+  sync($('#tr-after'), ia, animate);
+}
+
+const CHECK = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 4.8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+function renderZone(){
+  const I = dayInfo(S.date), showCall = S.showCall && (S.call || S.starting);
+  $('#app').classList.toggle('solo', !I.planned && !showCall);
+  $('#z-call').hidden = !showCall;
+  $('#z-cta').hidden = !!showCall || I.planned;
+  $('#z-plan').hidden = !!showCall || !I.planned;
+  if(showCall){ renderCall(); return; }
+  if(!I.planned){
+    const key = I.mv.length ? 'btn' : 'none';
+    const z = $('#z-cta');
+    if(z._k !== key){
+      z._k = key;
+      z.innerHTML = I.mv.length ? `<button class="btn primary big" id="go" type="button">Get me home earlier</button>` : `<p class="empty">Nothing here can move. Every meeting is fixed or already efficient.</p>`;
+      const go = $('#go'); if(go) go.onclick = () => { go.blur(); plan(); };
+    }
+    return;
+  }
+  const nx = nextMove(), b = busy();
+  let h = '';
+  for(const m of I.mv){
+    const c = confirmed()[m.id] || {}, stg = stageOf(m), ok = stg === 'confirmed', first = firstName(m.person || meetById(m.id).person);
+    const cs = m.chosen_start || m.to_start, cp = m.chosen_place !== undefined ? m.chosen_place : m.to_place;
+    const prim = nx && nx.id === m.id && !b ? ' primary' : '';
+    const moved = cs !== m.from_start || (cp||null) !== (m.from_place||null);
+    const lab = `<span class="who">${esc(m.person || meetById(m.id).person)}, ${esc(kindWord(m.id))}:</span>`;
+    const now = `<b>${t12(cs)}${m.from_place == null ? '' : ' ' + esc(placeShort(cp))}</b>`;
+    const was = `${t12(m.from_start)}${m.from_place == null ? '' : ' ' + esc(placeShort(m.from_place))}`;
+    const wins = (c.windows||[]).map(w => rng(w[0], w[1])).join(' and ');
+    const line = stg === 'asked' ? `${lab} ${esc(first)} can do ${esc(wins || 'a few times')}. Best slot: ${now}`
+      : moved ? `${lab} ${was} → ${now}` : `${lab} stays at ${was}`;
+    const act = ok ? `<span class="st">${CHECK}Confirmed</span>` :
+      `<button class="btn${prim}" type="button" data-id="${esc(m.id)}" ${b ? 'disabled' : ''}>${stg === 'asked' ? 'Call ' + esc(first) + ' back to confirm' : 'Ask ' + esc(first)}</button>`;
+    h += `<div class="mv${ok ? ' ok' : ''}"><span class="line">${line}</span>${act}</div>`;
+  }
+  const shown = new Set(I.mv.map(m => m.id));
+  for(const id in confirmed()){
+    const mt = meetById(id); if(mt.date !== S.date || shown.has(id)) continue;
+    h += `<div class="mv"><span class="line"><span class="who">${esc(mt.person)}, ${esc(kindWord(id))}:</span> stays at ${t12(mt.start)}${mt.place ? ' ' + esc(placeShort(mt.place)) : ''}</span><span class="st">No change</span></div>`;
+  }
+  const box = $('#z-moves');
+  box.innerHTML = h || `<p class="empty">Nothing to move on this day.</p>`;
+  const skip = $('#z-skip'), tr = S.st.triage;
+  const skipped = tr ? (week().meetings||[]).filter(m => m.date === S.date && tr[m.id] && tr[m.id].worth_calling === false && !shown.has(m.id)).map(m => labelOf(m.id)) : [];
+  skip.hidden = !skipped.length; skip.textContent = skipped.length ? 'Not worth a call: ' + skipped.join(', ') : '';
+  box.querySelectorAll('.btn').forEach(btn => btn.onclick = () => { btn.blur(); const m = I.mv.find(x => x.id === btn.dataset.id); startCall(m, kindOf(m)); });
+}
+
+const isAgent = s => /agent|assistant|ai|bot|caller/i.test(String(s));
+function resultText(c){
+  const o = c.outcome || {}, first = firstName(c.person || meetById(c.meeting_id).person), m = moveOf(c.meeting_id) || {};
+  const kd = c.kind || S.ctxKind || 'ask';
+  if(kd === 'inform'){
+    if(c.result === 'agreed' || o.agreed) return {t:`Confirmed with ${first} on the phone`, s:`${t12(o.start || c.to_start || m.chosen_start)}${atPlace(o.place || c.to_place || m.chosen_place)}`, auto:true};
+    return {t:`${first} can’t do that time.`, s:'Nothing has changed yet.', back:true};
+  }
+  const wins = (o.windows||[]);
+  if(c.result === 'declined' || o.declined || !wins.length) return {t:`${first} can’t move this one.`, s:`It stays at ${t12(m.from_start || meetById(c.meeting_id).start)}${atPlace(m.from_place !== undefined ? m.from_place : meetById(c.meeting_id).place)}.`, back:true};
+  const pl = (o.places_ok||[]).map(placeShort);
+  const ptxt = pl.length ? ' ' + (pl.length === 1 ? `${pl[0]} is fine.` : `${pl.join(' and ')} are fine.`) : '';
+  return {t:`${first} can do ${wins.map(w => rng(w[0], w[1])).join(' and ')}.${ptxt}`, s:`Best slot: <b>${t12(m.chosen_start || m.to_start)}${atPlace(m.chosen_place !== undefined ? m.chosen_place : m.to_place)}</b>`, ask:true};
+}
+function renderCall(){
+  const c = S.call, ctx = S.ctx, root = $('#z-call');
+  const cm = c ? (c.mode || (S.st.mode === 'live' ? null : 'mock')) : null, tag = $('#cc-tag');
+  tag.hidden = !cm; tag.textContent = cm === 'live' ? 'Live call' : 'Simulated call';
+  const who = (c && c.person) || (ctx && ctx.person) || '', first = firstName(who);
+  const oc = $('#cc-out');
+  if(S.result && c){
+    const r = resultText(c);
+    root.classList.add('res');
+    $('#cc-title').textContent = r.t; $('#cc-sub').innerHTML = esc(r.s).replace(/&lt;(\/?)b&gt;/g, '<$1b>');
+    $('#caps').innerHTML = '';
+    const nx = nextMove();
+    const html = r.ask ? `<button class="btn primary big" id="next" type="button">Call ${esc(first)} back to confirm</button><button class="btn" id="back" type="button">Back to the plan</button>`
+      : `<button class="btn${nx ? ' primary' : ''}" id="next" type="button">${nx ? (kindOf(nx) === 'ask' ? 'Ask ' + esc(firstName(nx.person)) : 'Call ' + esc(firstName(nx.person)) + ' back to confirm') : 'See the plan'}</button>`;
+    if(oc._h !== html){ oc.innerHTML = html; oc._h = html; const n = $('#next'); if(n) n.onclick = () => resultAction(); const bk = $('#back'); if(bk) bk.onclick = () => backToPlan(); }
+    return;
+  }
+  root.classList.remove('res');
+  const st = c ? c.status : 'queued', turns = (c && c.turns) || [];
+  const title = st === 'parsing' ? `Reading ${first}’s answer…` : st === 'failed' ? (c._msg ? 'Couldn’t catch that.' : 'No answer.') : `Calling ${first}…`;
+  $('#cc-title').textContent = title;
+  const kd = (c && c.kind) || S.ctxKind || 'ask';
+  const mv = ctx || (c && dayInfo(S.date).mv.find(m => m.id === c.meeting_id)) || null;
+  const cs = (c && c.to_start) || (mv && (mv.chosen_start || mv.to_start)), cp = c && c.to_place !== undefined && c.to_place !== null ? c.to_place : (mv && (mv.chosen_place !== undefined ? mv.chosen_place : mv.to_place));
+  $('#cc-sub').textContent = kd === 'inform' && cs ? `Confirming ${t12(cs)}${atPlace(cp)} with ${first}` : `Asking ${first} which times and places work`;
+  const caps = $('#caps'); let last = turns.slice(-3); if(last.reduce((n, t) => n + String(t.text||'').length, 0) > 150) last = turns.slice(-2);
+  const sig = last.length + '|' + turns.length + '|' + (last.length ? last[last.length-1].text : '') + '|' + st;
+  if(caps._sig !== sig){
+    const fresh = turns.length > (caps._n || 0); caps._sig = sig; caps._n = turns.length;
+    caps.innerHTML = last.length ? last.map((t, i) => {
+      const ag = isAgent(t.speaker), isLast = i === last.length-1;
+      return `<div class="cap ${ag ? 'agent' : 'person'}${isLast ? (fresh ? ' fresh' : '') : ' old'}"><div class="w">${ag ? 'AI assistant' : esc(first)}</div><div class="x">${esc(t.text)}</div></div>`;
+    }).join('') : (st === 'failed' ? '' : `<div class="cap wait"><div class="x">Ringing…</div></div>`);
+  }
+  const html = st === 'failed' ? `<button class="btn primary big" id="retry" type="button">${c._msg ? 'Ask again' : 'Try again'}</button><button class="btn" id="back" type="button">Back to the plan</button>` : '';
+  if(oc._h !== html){
+    oc.innerHTML = html; oc._h = html;
+    const r = $('#retry'); if(r) r.onclick = () => retry();
+    const bk = $('#back'); if(bk) bk.onclick = () => backToPlan();
+  }
+}
+
+/* ---------- calendar line ---------- */
+function renderCal(){
+  const c = S.st.calendar || {}, box = $('#cal'), st = c.status;
+  const t = st === 'syncing' ? 'Updating your calendar…' : st === 'synced' ? 'Your calendar is updated' : st === 'error' ? 'Couldn’t update your calendar.' : '';
+  box.hidden = !t; $('#cal-t').textContent = t; $('#cal-reset').hidden = st !== 'synced';
+  clearTimeout(S.ct); if(st === 'syncing') S.ct = setTimeout(() => loadState(false), 1500);
+}
+$('#cal-reset').onclick = async e => {
+  e.currentTarget.blur();
+  try{ await jf(BASE + '/api/calendar/reset', {method:'POST'}, 15000); await loadState(false); toast('Calendar put back'); }
+  catch(err){ toast('Couldn’t reset the calendar: ' + err.message); }
+};
+
+/* ---------- the others, asked in simulation ---------- */
+const WD = d => dateObj(d).toLocaleDateString('en-US', {weekday:'long', timeZone:'UTC'});
+function renderSim(){
+  const box = $('#sim'), sm = S.sim;
+  box.hidden = !(S.result && sm);
+  if(box.hidden) return;
+  $('#sim-l').innerHTML = sm.lines.slice(-7).map(l => `<div>${esc(l)}</div>`).join('') + (sm.total ? `<div class="tot">${esc(sm.total)}</div>` : '');
+}
+async function doSimulate(liveId){
+  let r;
+  try{ r = await jf(BASE + '/api/simulate', {method:'POST'}, 20000); }   // no body: the server does not read one
+  catch(e){ return; }                                   // endpoint missing or failed: skip this step
+  S.simDone = true;
+  await loadState(true);
+  const seen = new Map();
+  for(const c of ((r && r.calls) || [])){ if(c.meeting_id && c.meeting_id !== liveId) seen.set(c.meeting_id, c); }
+  const lines = [];
+  for(const [id, c] of seen){
+    const mt = meetById(id); if(!mt.date || !S.st.days[mt.date]) continue;
+    const m = (S.st.days[mt.date].moves||[]).find(x => x.id === id);
+    const first = firstName(c.person || mt.person);
+    let tx;
+    if(m && stageOf(m) === 'confirmed') tx = `${t12(m.chosen_start || m.to_start)}${atPlace(m.chosen_place !== undefined ? m.chosen_place : m.to_place)}, confirmed`;
+    else if(c.result === 'declined' || c.result === 'not_agreed') tx = 'stays put';
+    else tx = m ? `${t12(m.chosen_start || m.to_start)}${atPlace(m.chosen_place !== undefined ? m.chosen_place : m.to_place)}, asked` : 'asked';
+    lines.push(`${first}, ${WD(mt.date)}: ${tx}`);
+  }
+  S.sim = {lines:[], total:null}; renderSim();
+  for(const l of lines){ S.sim.lines.push(l); renderSim(); await sleep(REDUCED ? 0 : 150); }
+  const tot = dates().reduce((n, d) => { const x = S.st.days[d]; return n + (x ? (typeof x.saved_min === 'number' ? x.saved_min : Math.max(0, gainOf(x))) : 0); }, 0);
+  if(tot > 0){ S.sim.total = `${dur(tot)} back this week`; renderSim(); }
+}
+
+/* ---------- call flow ---------- */
+function plan(){
+  if(S.planned.has(S.date)) return;
+  S.planned.add(S.date); renderAll(true);
+}
+function clearResult(){ clearTimeout(S.rt); S.result = null; S.sim = null; $('#sim').hidden = true; const oc = $('#cc-out'); if(oc) oc._h = null; }
+function backToPlan(){
+  clearTimeout(S.pt); clearResult(); S.call = null; S.starting = false; S.settling = false; S.showCall = false; S.fake = false;
+  renderAll(false);
+}
+function resultAction(){
+  const nx = nextMove(); clearResult(); S.call = null; S.showCall = false; S.fake = false;
+  if(nx) startCall(nx, kindOf(nx)); else renderAll(false);
+}
+function retry(){
+  const c = S.call; const m = S.ctx || (c && dayInfo(S.date).mv.find(x => x.id === c.meeting_id));
+  const kd = (c && c.kind) || S.ctxKind || 'ask';
+  S.call = null; S.showCall = false; S.fake = false; renderZone();
+  if(m) startCall(m, kd);
+}
+async function startCall(m, kind){
+  if(!m || busy()) return;
+  kind = kind || kindOf(m);
+  clearResult();
+  S.starting = true; S.ctx = m; S.ctxKind = kind; S.call = null; S.tries = 0; S.errs = 0; S.showCall = true; S.fake = false;
+  renderZone();
+  try{
+    const r = await jf(BASE + '/api/call', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({meeting_id:m.id, kind})}, 15000);
+    S.call = r.call || r;
+  }catch(e){
+    S.starting = false; S.showCall = false; renderZone(); toast('Could not start the call: ' + e.message); return;
+  }
+  S.starting = false; renderZone(); schedulePoll(700);
+}
+function schedulePoll(ms){ clearTimeout(S.pt); S.pt = setTimeout(poll, ms || 1500); }
+async function poll(){
+  const call = S.call; if(!call || S.fake) return;
+  try{
+    const r = await jf(BASE + '/api/call/' + encodeURIComponent(call.id));
+    if(S.call !== call && !(S.call && S.call.id === call.id)) return;
+    const c = r.call || r; c.kind = c.kind || call.kind; S.call = c; S.errs = 0;
+    if(c.status === 'failed'){ renderZone(); return; }
+    if(c.status === 'ended' && !c.outcome && (c.result === 'unparsed' || ++S.tries > 6)){ c.status = 'failed'; c._msg = 'unparsed'; renderZone(); return; }
+    if(c.status === 'ended' && c.outcome){
+      S.settling = true; S.result = {id:c.id}; renderZone();
+      await loadState(true);                   // the plan changes behind the result: blocks slide, the clock counts, the sky shifts
+      if((c.kind || S.ctxKind) === 'ask' && !S.simDone && S.call === c){ renderZone(); await doSimulate(c.meeting_id); }
+      S.settling = false;
+      if(S.call !== c) return;
+      renderZone();
+      if(resultText(c).auto) S.rt = setTimeout(() => { if(S.result && S.call === c) backToPlan(); }, 4500);
+      return;
+    }
+    renderZone();
+  }catch(e){
+    if(++S.errs > 6){ toast('Lost contact with the server while polling the call'); if(S.call){ S.call.status = 'failed'; renderZone(); } return; }
+  }
+  schedulePoll();
+}
+async function doReset(){
+  clearTimeout(S.pt); clearResult(); S.call = null; S.ctx = null; S.starting = false; S.settling = false; S.showCall = false; S.fake = false; S.planned = new Set(); S.simDone = false;
+  try{
+    await jf(BASE + '/api/reset', {method:'POST'});
+    S.lastDate = null; S.hashDone = true;
+    await loadState(false); toast('Started over');
+  }catch(e){ toast('Reset failed: ' + e.message); }
+}
+function primary(){
+  if(!S.st || S.starting || S.settling) return;
+  if(S.showCall){
+    if(S.result) resultAction();
+    else if(S.call && S.call.status === 'failed') retry();
+    return;
+  }
+  const I = dayInfo(S.date);
+  if(!I.planned){ if(I.mv.length) plan(); return; }
+  const nx = nextMove(); if(nx && !busy()) startCall(nx, kindOf(nx));
+}
+
+let tt;
+function toast(msg){ const t = $('#toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('on'), 3500); }
+
+$('#reset').onclick = e => { e.currentTarget.blur(); doReset(); };
+document.addEventListener('keydown', e => {
+  if(e.metaKey || e.ctrlKey || e.altKey || !S.st) return;
+  const onBtn = e.target && /^(BUTTON|A)$/.test(e.target.tagName);
+  if(e.key === 'r' || e.key === 'R') doReset();
+  else if(e.key === ' ' || e.code === 'Space'){ if(onBtn && e.target.matches(':focus-visible')) return; e.preventDefault(); if(!e.repeat) primary(); }
+  else if(e.key === 'Escape'){ if(S.showCall && !isActive() && !S.starting && !S.settling) backToPlan(); }
+  else if(/^[1-5]$/.test(e.key)){ const ds = dates(); if(ds[+e.key-1]) selectDay(ds[+e.key-1]); }
+});
+document.addEventListener('keyup', e => { if(e.key === ' ' && !(e.target && e.target.matches && e.target.matches(':focus-visible'))) e.preventDefault(); });
+loadState(false);
+window.__homeby4 = S;
+})();
+</script>
+</body>
+</html>

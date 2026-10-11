@@ -1,0 +1,2016 @@
+{
+ "week": {
+  "owner": "Chris",
+  "tz": "America/Los_Angeles",
+  "window": {
+   "start": "2027-10-11",
+   "end": "2027-10-15"
+  },
+  "demo_phone": "+15555550100",
+  "home": "home",
+  "places": {
+   "home": {
+    "name": "Home \u00b7 Noe Valley",
+    "lat": 37.7502,
+    "lng": -122.4337
+   },
+   "ritual": {
+    "name": "Ritual Coffee \u00b7 Mission",
+    "lat": 37.7564,
+    "lng": -122.4211
+   },
+   "office": {
+    "name": "Studio 4 \u00b7 SoMa",
+    "lat": 37.7786,
+    "lng": -122.4056
+   },
+   "sightglass": {
+    "name": "Sightglass \u00b7 SoMa",
+    "lat": 37.7771,
+    "lng": -122.4086
+   },
+   "zuni": {
+    "name": "Zuni Caf\u00e9 \u00b7 Hayes Valley",
+    "lat": 37.7737,
+    "lng": -122.4213
+   },
+   "fidi": {
+    "name": "Embarcadero Center \u00b7 FiDi",
+    "lat": 37.7946,
+    "lng": -122.3999
+   }
+  },
+  "meetings": [
+   {
+    "id": "mon-1",
+    "date": "2027-10-11",
+    "start": "10:00",
+    "dur": 45,
+    "title": "Coffee: Lena Hoffmann (recruiter)",
+    "person": "Lena Hoffmann",
+    "phone": "+15555550100",
+    "kind": "in_person",
+    "place": "sightglass",
+    "alt_places": [],
+    "flexible": false,
+    "flex": [],
+    "note": ""
+   },
+   {
+    "id": "mon-2",
+    "date": "2027-10-11",
+    "start": "12:30",
+    "dur": 60,
+    "title": "Lunch: Tom\u00e1s Rivera (vendor rep)",
+    "person": "Tom\u00e1s Rivera",
+    "phone": "+15555550100",
+    "kind": "in_person",
+    "place": "zuni",
+    "alt_places": [
+     "sightglass"
+    ],
+    "flexible": true,
+    "flex": [
+     [
+      "10:30",
+      "14:00"
+     ]
+    ],
+    "note": "Vendor rep, relaxed about timing."
+   },
+   {
+    "id": "mon-3",
+    "date": "2027-10-11",
+    "start": "14:30",
+    "dur": 60,
+    "title": "Product sync: Jonas Weber",
+    "person": "Jonas Weber",
+    "phone": "+15555550100",
+    "kind": "in_person",
+    "place": "office",
+    "alt_places": [],
+    "flexible": false,
+    "flex": [],
+    "note": ""
+   },
+   {
+    "id": "mon-4",
+    "date": "2027-10-11",
+    "start": "16:00",
+    "dur": 45,
+    "title": "Intro: Aiko Tanaka (founder)",
+    "person": "Aiko Tanaka",
+    "phone": "+15555550100",
+    "kind": "in_person",
+    "place": "fidi",
+    "alt_places": [],
+    "flexible": true,
+    "flex": [
+     [
+      "11:00",
+      "17:00"
+     ]
+    ],
+    "note": "Founder friend, flexible any weekday."
+   },
+   {
+    "id": "tue-1",
+    "date": "2027-10-12",
+    "start": "09:30",
+    "dur": 45,
+    "title": "Coffee: Mara Lindqvist (designer)",
+    "person": "Mara Lindqvist",
+    "phone": "+15555550100",
+    "kind": "in_person",
+    "place": "ritual",
+    "alt_places": [],
+    "flexible": false,
+    "flex": [],
+    "note": ""
+   },
+   {
+    "id": "tue-2",
+    "date": "2027-10-12",
+    "start": "11:00",
+    "dur": 60,
+    "title": "Office hours: Jonas Weber",
+    "person": "Jonas Weber",
+    "phone": "+15555550100",
+    "kind": "in_person",
+    "place": "office",
+    "alt_places": [],
+    "flexible": false,
+    "flex": [],
+    "note": ""
+   },
+   {
+    "id": "tue-3",
+    "date": "2027-10-12",
+    "start": "13:15",
+    "dur": 60,
+    "title": "Lunch: Raj Patel (vendor rep)",
+    "person": "Raj Patel",
+    "phone": "+15555550100",
+    "kind": "in_person",
+    "place": "zuni",
+    "alt_places": [
+     "office"
+    ],
+    "flexible": true,
+    "flex": [
+     [
+      "11:30",
+      "14:00"
+     ]
+    ],
+    "note": "Raj is easy-going; lunch near the office works too."
+   },
+   {
+    "id": "tue-4",
+    "date": "2027-10-12",
+    "start": "15:00",
+    "dur": 45,
+    "title": "1:1: Priya Raman (advisor)",
+    "person": "Priya Raman",
+    "phone": "+15555550100",
+    "kind": "in_person",
+    "place": "ritual",
+    "alt_places": [],
+    "flexible": false,
+    "flex": [],
+    "note": ""
+   },
+   {
+    "id": "tue-5",
+    "date": "2027-10-12",
+    "start": "17:30",
+    "dur": 45,
+    "title": "Catch-up: Dana Whitfield (angel)",
+    "person": "Dana Whitfield",
+    "phone": "+15555550100",
+    "kind": "in_person",
+    "place": "fidi",
+    "alt_places": [],
+    "flexible": true,
+    "flex": [
+     [
+      "12:30",
+      "18:00"
+     ]
+    ],
+    "note": "Dana's assistant said afternoons are open."
+   },
+   {
+    "id": "wed-1",
+    "date": "2027-10-13",
+    "start": "09:00",
+    "dur": 60,
+    "title": "Weekly sync: Jonas Weber",
+    "person": "Jonas Weber",
+    "phone": "+15555550100",
+    "kind": "in_person",
+    "place": "office",
+    "alt_places": [],
+    "flexible": false,
+    "flex": [],
+    "note": ""
+   },
+   {
+    "id": "wed-2",
+    "date": "2027-10-13",
+    "start": "11:30",
+    "dur": 45,
+    "title": "Coffee: Priya Raman (advisor)",
+    "person": "Priya Raman",
+    "phone": "+15555550100",
+    "kind": "in_person",
+    "place": "zuni",
+    "alt_places": [
+     "office"
+    ],
+    "flexible": true,
+    "flex": [
+     [
+      "10:00",
+      "13:00"
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "id": "wed-3",
+    "date": "2027-10-13",
+    "start": "14:00",
+    "dur": 60,
+    "title": "Meet: Marcus Bell (junior colleague)",
+    "person": "Marcus Bell",
+    "phone": "+15555550100",
+    "kind": "in_person",
+    "place": "sightglass",
+    "alt_places": [
+     "office"
+    ],
+    "flexible": true,
+    "flex": [
+     [
+      "10:30",
+      "15:00"
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "id": "wed-4",
+    "date": "2027-10-13",
+    "start": "16:30",
+    "dur": 45,
+    "title": "Dinner prep: Hana Sato",
+    "person": "Hana Sato",
+    "phone": "+15555550100",
+    "kind": "in_person",
+    "place": "ritual",
+    "alt_places": [],
+    "flexible": true,
+    "flex": [
+     [
+      "12:00",
+      "17:30"
+     ]
+    ],
+    "note": "Hana is flexible, prefers early."
+   },
+   {
+    "id": "thu-1",
+    "date": "2027-10-14",
+    "start": "10:00",
+    "dur": 60,
+    "title": "Roadmap: Jonas Weber",
+    "person": "Jonas Weber",
+    "phone": "+15555550100",
+    "kind": "in_person",
+    "place": "office",
+    "alt_places": [],
+    "flexible": false,
+    "flex": [],
+    "note": ""
+   },
+   {
+    "id": "thu-2",
+    "date": "2027-10-14",
+    "start": "14:00",
+    "dur": 60,
+    "title": "Design review: Mara Lindqvist",
+    "person": "Mara Lindqvist",
+    "phone": "+15555550100",
+    "kind": "in_person",
+    "place": "office",
+    "alt_places": [],
+    "flexible": false,
+    "flex": [],
+    "note": ""
+   },
+   {
+    "id": "fri-1",
+    "date": "2027-10-15",
+    "start": "10:30",
+    "dur": 60,
+    "title": "Coffee: Dev Shah (friend)",
+    "person": "Dev Shah",
+    "phone": "+15555550100",
+    "kind": "in_person",
+    "place": "ritual",
+    "alt_places": [
+     "sightglass"
+    ],
+    "flexible": true,
+    "flex": [
+     [
+      "09:30",
+      "12:00"
+     ]
+    ],
+    "note": ""
+   },
+   {
+    "id": "fri-2",
+    "date": "2027-10-15",
+    "start": "13:00",
+    "dur": 45,
+    "title": "Lunch: Maya Chen (investor)",
+    "person": "Maya Chen",
+    "phone": "+15555550100",
+    "kind": "in_person",
+    "place": "zuni",
+    "alt_places": [],
+    "flexible": false,
+    "flex": [],
+    "note": ""
+   },
+   {
+    "id": "fri-3",
+    "date": "2027-10-15",
+    "start": "15:30",
+    "dur": 45,
+    "title": "Walk-and-talk: Ben Carter",
+    "person": "Ben Carter",
+    "phone": "+15555550100",
+    "kind": "in_person",
+    "place": "fidi",
+    "alt_places": [
+     "office"
+    ],
+    "flexible": true,
+    "flex": [
+     [
+      "13:30",
+      "17:00"
+     ]
+    ],
+    "note": ""
+   }
+  ]
+ },
+ "days": {
+  "2027-10-11": {
+   "date": "2027-10-11",
+   "before": {
+    "leave_home": "09:35",
+    "home_at": "17:10",
+    "travel_min": 90,
+    "dead_min": 20,
+    "free_min": 135,
+    "events": [
+     {
+      "id": "mon-1",
+      "start": "10:00",
+      "end": "10:45",
+      "place": "sightglass"
+     },
+     {
+      "id": "mon-2",
+      "start": "12:30",
+      "end": "13:30",
+      "place": "zuni"
+     },
+     {
+      "id": "mon-3",
+      "start": "14:30",
+      "end": "15:30",
+      "place": "office"
+     },
+     {
+      "id": "mon-4",
+      "start": "16:00",
+      "end": "16:45",
+      "place": "fidi"
+     }
+    ],
+    "segments": [
+     {
+      "type": "travel",
+      "start": "09:35",
+      "end": "10:00",
+      "from": "home",
+      "to": "sightglass"
+     },
+     {
+      "type": "meeting",
+      "start": "10:00",
+      "end": "10:45",
+      "id": "mon-1"
+     },
+     {
+      "type": "travel",
+      "start": "10:45",
+      "end": "11:00",
+      "from": "sightglass",
+      "to": "zuni"
+     },
+     {
+      "type": "free",
+      "start": "11:00",
+      "end": "12:30"
+     },
+     {
+      "type": "meeting",
+      "start": "12:30",
+      "end": "13:30",
+      "id": "mon-2"
+     },
+     {
+      "type": "travel",
+      "start": "13:30",
+      "end": "13:45",
+      "from": "zuni",
+      "to": "office"
+     },
+     {
+      "type": "free",
+      "start": "13:45",
+      "end": "14:30"
+     },
+     {
+      "type": "meeting",
+      "start": "14:30",
+      "end": "15:30",
+      "id": "mon-3"
+     },
+     {
+      "type": "travel",
+      "start": "15:30",
+      "end": "15:40",
+      "from": "office",
+      "to": "fidi"
+     },
+     {
+      "type": "dead",
+      "start": "15:40",
+      "end": "16:00"
+     },
+     {
+      "type": "meeting",
+      "start": "16:00",
+      "end": "16:45",
+      "id": "mon-4"
+     },
+     {
+      "type": "travel",
+      "start": "16:45",
+      "end": "17:10",
+      "from": "fidi",
+      "to": "home"
+     }
+    ]
+   },
+   "after": {
+    "leave_home": "09:35",
+    "home_at": "15:55",
+    "travel_min": 70,
+    "dead_min": 20,
+    "free_min": 80,
+    "events": [
+     {
+      "id": "mon-1",
+      "start": "10:00",
+      "end": "10:45",
+      "place": "sightglass"
+     },
+     {
+      "id": "mon-2",
+      "start": "11:00",
+      "end": "12:00",
+      "place": "sightglass"
+     },
+     {
+      "id": "mon-4",
+      "start": "12:15",
+      "end": "13:00",
+      "place": "fidi"
+     },
+     {
+      "id": "mon-3",
+      "start": "14:30",
+      "end": "15:30",
+      "place": "office"
+     }
+    ],
+    "segments": [
+     {
+      "type": "travel",
+      "start": "09:35",
+      "end": "10:00",
+      "from": "home",
+      "to": "sightglass"
+     },
+     {
+      "type": "meeting",
+      "start": "10:00",
+      "end": "10:45",
+      "id": "mon-1"
+     },
+     {
+      "type": "dead",
+      "start": "10:45",
+      "end": "11:00"
+     },
+     {
+      "type": "meeting",
+      "start": "11:00",
+      "end": "12:00",
+      "id": "mon-2"
+     },
+     {
+      "type": "travel",
+      "start": "12:00",
+      "end": "12:10",
+      "from": "sightglass",
+      "to": "fidi"
+     },
+     {
+      "type": "dead",
+      "start": "12:10",
+      "end": "12:15"
+     },
+     {
+      "type": "meeting",
+      "start": "12:15",
+      "end": "13:00",
+      "id": "mon-4"
+     },
+     {
+      "type": "travel",
+      "start": "13:00",
+      "end": "13:10",
+      "from": "fidi",
+      "to": "office"
+     },
+     {
+      "type": "free",
+      "start": "13:10",
+      "end": "14:30"
+     },
+     {
+      "type": "meeting",
+      "start": "14:30",
+      "end": "15:30",
+      "id": "mon-3"
+     },
+     {
+      "type": "travel",
+      "start": "15:30",
+      "end": "15:55",
+      "from": "office",
+      "to": "home"
+     }
+    ]
+   },
+   "moves": [
+    {
+     "id": "mon-2",
+     "person": "Tom\u00e1s Rivera",
+     "from_start": "12:30",
+     "to_start": "11:00",
+     "from_place": "zuni",
+     "to_place": "sightglass"
+    },
+    {
+     "id": "mon-4",
+     "person": "Aiko Tanaka",
+     "from_start": "16:00",
+     "to_start": "12:15",
+     "from_place": "fidi",
+     "to_place": "fidi"
+    }
+   ],
+   "saved_min": 75,
+   "potential": true
+  },
+  "2027-10-12": {
+   "date": "2027-10-12",
+   "before": {
+    "leave_home": "09:10",
+    "home_at": "18:40",
+    "travel_min": 105,
+    "dead_min": 60,
+    "free_min": 150,
+    "events": [
+     {
+      "id": "tue-1",
+      "start": "09:30",
+      "end": "10:15",
+      "place": "ritual"
+     },
+     {
+      "id": "tue-2",
+      "start": "11:00",
+      "end": "12:00",
+      "place": "office"
+     },
+     {
+      "id": "tue-3",
+      "start": "13:15",
+      "end": "14:15",
+      "place": "zuni"
+     },
+     {
+      "id": "tue-4",
+      "start": "15:00",
+      "end": "15:45",
+      "place": "ritual"
+     },
+     {
+      "id": "tue-5",
+      "start": "17:30",
+      "end": "18:15",
+      "place": "fidi"
+     }
+    ],
+    "segments": [
+     {
+      "type": "travel",
+      "start": "09:10",
+      "end": "09:30",
+      "from": "home",
+      "to": "ritual"
+     },
+     {
+      "type": "meeting",
+      "start": "09:30",
+      "end": "10:15",
+      "id": "tue-1"
+     },
+     {
+      "type": "travel",
+      "start": "10:15",
+      "end": "10:30",
+      "from": "ritual",
+      "to": "office"
+     },
+     {
+      "type": "dead",
+      "start": "10:30",
+      "end": "11:00"
+     },
+     {
+      "type": "meeting",
+      "start": "11:00",
+      "end": "12:00",
+      "id": "tue-2"
+     },
+     {
+      "type": "travel",
+      "start": "12:00",
+      "end": "12:15",
+      "from": "office",
+      "to": "zuni"
+     },
+     {
+      "type": "free",
+      "start": "12:15",
+      "end": "13:15"
+     },
+     {
+      "type": "meeting",
+      "start": "13:15",
+      "end": "14:15",
+      "id": "tue-3"
+     },
+     {
+      "type": "travel",
+      "start": "14:15",
+      "end": "14:30",
+      "from": "zuni",
+      "to": "ritual"
+     },
+     {
+      "type": "dead",
+      "start": "14:30",
+      "end": "15:00"
+     },
+     {
+      "type": "meeting",
+      "start": "15:00",
+      "end": "15:45",
+      "id": "tue-4"
+     },
+     {
+      "type": "travel",
+      "start": "15:45",
+      "end": "16:00",
+      "from": "ritual",
+      "to": "fidi"
+     },
+     {
+      "type": "free",
+      "start": "16:00",
+      "end": "17:30"
+     },
+     {
+      "type": "meeting",
+      "start": "17:30",
+      "end": "18:15",
+      "id": "tue-5"
+     },
+     {
+      "type": "travel",
+      "start": "18:15",
+      "end": "18:40",
+      "from": "fidi",
+      "to": "home"
+     }
+    ]
+   },
+   "after": {
+    "leave_home": "09:10",
+    "home_at": "16:05",
+    "travel_min": 80,
+    "dead_min": 35,
+    "free_min": 45,
+    "events": [
+     {
+      "id": "tue-1",
+      "start": "09:30",
+      "end": "10:15",
+      "place": "ritual"
+     },
+     {
+      "id": "tue-2",
+      "start": "11:00",
+      "end": "12:00",
+      "place": "office"
+     },
+     {
+      "id": "tue-3",
+      "start": "12:00",
+      "end": "13:00",
+      "place": "office"
+     },
+     {
+      "id": "tue-5",
+      "start": "13:15",
+      "end": "14:00",
+      "place": "fidi"
+     },
+     {
+      "id": "tue-4",
+      "start": "15:00",
+      "end": "15:45",
+      "place": "ritual"
+     }
+    ],
+    "segments": [
+     {
+      "type": "travel",
+      "start": "09:10",
+      "end": "09:30",
+      "from": "home",
+      "to": "ritual"
+     },
+     {
+      "type": "meeting",
+      "start": "09:30",
+      "end": "10:15",
+      "id": "tue-1"
+     },
+     {
+      "type": "travel",
+      "start": "10:15",
+      "end": "10:30",
+      "from": "ritual",
+      "to": "office"
+     },
+     {
+      "type": "dead",
+      "start": "10:30",
+      "end": "11:00"
+     },
+     {
+      "type": "meeting",
+      "start": "11:00",
+      "end": "12:00",
+      "id": "tue-2"
+     },
+     {
+      "type": "meeting",
+      "start": "12:00",
+      "end": "13:00",
+      "id": "tue-3"
+     },
+     {
+      "type": "travel",
+      "start": "13:00",
+      "end": "13:10",
+      "from": "office",
+      "to": "fidi"
+     },
+     {
+      "type": "dead",
+      "start": "13:10",
+      "end": "13:15"
+     },
+     {
+      "type": "meeting",
+      "start": "13:15",
+      "end": "14:00",
+      "id": "tue-5"
+     },
+     {
+      "type": "travel",
+      "start": "14:00",
+      "end": "14:15",
+      "from": "fidi",
+      "to": "ritual"
+     },
+     {
+      "type": "free",
+      "start": "14:15",
+      "end": "15:00"
+     },
+     {
+      "type": "meeting",
+      "start": "15:00",
+      "end": "15:45",
+      "id": "tue-4"
+     },
+     {
+      "type": "travel",
+      "start": "15:45",
+      "end": "16:05",
+      "from": "ritual",
+      "to": "home"
+     }
+    ]
+   },
+   "moves": [
+    {
+     "id": "tue-3",
+     "person": "Raj Patel",
+     "from_start": "13:15",
+     "to_start": "12:00",
+     "from_place": "zuni",
+     "to_place": "office"
+    },
+    {
+     "id": "tue-5",
+     "person": "Dana Whitfield",
+     "from_start": "17:30",
+     "to_start": "13:15",
+     "from_place": "fidi",
+     "to_place": "fidi"
+    }
+   ],
+   "saved_min": 155,
+   "potential": true
+  },
+  "2027-10-13": {
+   "date": "2027-10-13",
+   "before": {
+    "leave_home": "08:35",
+    "home_at": "17:35",
+    "travel_min": 90,
+    "dead_min": 0,
+    "free_min": 240,
+    "events": [
+     {
+      "id": "wed-1",
+      "start": "09:00",
+      "end": "10:00",
+      "place": "office"
+     },
+     {
+      "id": "wed-2",
+      "start": "11:30",
+      "end": "12:15",
+      "place": "zuni"
+     },
+     {
+      "id": "wed-3",
+      "start": "14:00",
+      "end": "15:00",
+      "place": "sightglass"
+     },
+     {
+      "id": "wed-4",
+      "start": "16:30",
+      "end": "17:15",
+      "place": "ritual"
+     }
+    ],
+    "segments": [
+     {
+      "type": "travel",
+      "start": "08:35",
+      "end": "09:00",
+      "from": "home",
+      "to": "office"
+     },
+     {
+      "type": "meeting",
+      "start": "09:00",
+      "end": "10:00",
+      "id": "wed-1"
+     },
+     {
+      "type": "travel",
+      "start": "10:00",
+      "end": "10:15",
+      "from": "office",
+      "to": "zuni"
+     },
+     {
+      "type": "free",
+      "start": "10:15",
+      "end": "11:30"
+     },
+     {
+      "type": "meeting",
+      "start": "11:30",
+      "end": "12:15",
+      "id": "wed-2"
+     },
+     {
+      "type": "travel",
+      "start": "12:15",
+      "end": "12:30",
+      "from": "zuni",
+      "to": "sightglass"
+     },
+     {
+      "type": "free",
+      "start": "12:30",
+      "end": "14:00"
+     },
+     {
+      "type": "meeting",
+      "start": "14:00",
+      "end": "15:00",
+      "id": "wed-3"
+     },
+     {
+      "type": "travel",
+      "start": "15:00",
+      "end": "15:15",
+      "from": "sightglass",
+      "to": "ritual"
+     },
+     {
+      "type": "free",
+      "start": "15:15",
+      "end": "16:30"
+     },
+     {
+      "type": "meeting",
+      "start": "16:30",
+      "end": "17:15",
+      "id": "wed-4"
+     },
+     {
+      "type": "travel",
+      "start": "17:15",
+      "end": "17:35",
+      "from": "ritual",
+      "to": "home"
+     }
+    ]
+   },
+   "after": {
+    "leave_home": "08:35",
+    "home_at": "16:35",
+    "travel_min": 90,
+    "dead_min": 15,
+    "free_min": 165,
+    "events": [
+     {
+      "id": "wed-1",
+      "start": "09:00",
+      "end": "10:00",
+      "place": "office"
+     },
+     {
+      "id": "wed-2",
+      "start": "11:30",
+      "end": "12:15",
+      "place": "zuni"
+     },
+     {
+      "id": "wed-3",
+      "start": "14:00",
+      "end": "15:00",
+      "place": "sightglass"
+     },
+     {
+      "id": "wed-4",
+      "start": "15:30",
+      "end": "16:15",
+      "place": "ritual"
+     }
+    ],
+    "segments": [
+     {
+      "type": "travel",
+      "start": "08:35",
+      "end": "09:00",
+      "from": "home",
+      "to": "office"
+     },
+     {
+      "type": "meeting",
+      "start": "09:00",
+      "end": "10:00",
+      "id": "wed-1"
+     },
+     {
+      "type": "travel",
+      "start": "10:00",
+      "end": "10:15",
+      "from": "office",
+      "to": "zuni"
+     },
+     {
+      "type": "free",
+      "start": "10:15",
+      "end": "11:30"
+     },
+     {
+      "type": "meeting",
+      "start": "11:30",
+      "end": "12:15",
+      "id": "wed-2"
+     },
+     {
+      "type": "travel",
+      "start": "12:15",
+      "end": "12:30",
+      "from": "zuni",
+      "to": "sightglass"
+     },
+     {
+      "type": "free",
+      "start": "12:30",
+      "end": "14:00"
+     },
+     {
+      "type": "meeting",
+      "start": "14:00",
+      "end": "15:00",
+      "id": "wed-3"
+     },
+     {
+      "type": "travel",
+      "start": "15:00",
+      "end": "15:15",
+      "from": "sightglass",
+      "to": "ritual"
+     },
+     {
+      "type": "dead",
+      "start": "15:15",
+      "end": "15:30"
+     },
+     {
+      "type": "meeting",
+      "start": "15:30",
+      "end": "16:15",
+      "id": "wed-4"
+     },
+     {
+      "type": "travel",
+      "start": "16:15",
+      "end": "16:35",
+      "from": "ritual",
+      "to": "home"
+     }
+    ]
+   },
+   "moves": [
+    {
+     "id": "wed-4",
+     "person": "Hana Sato",
+     "from_start": "16:30",
+     "to_start": "15:30",
+     "from_place": "ritual",
+     "to_place": "ritual"
+    }
+   ],
+   "saved_min": 60,
+   "potential": true
+  },
+  "2027-10-14": {
+   "date": "2027-10-14",
+   "before": {
+    "leave_home": "09:35",
+    "home_at": "15:25",
+    "travel_min": 50,
+    "dead_min": 0,
+    "free_min": 180,
+    "events": [
+     {
+      "id": "thu-1",
+      "start": "10:00",
+      "end": "11:00",
+      "place": "office"
+     },
+     {
+      "id": "thu-2",
+      "start": "14:00",
+      "end": "15:00",
+      "place": "office"
+     }
+    ],
+    "segments": [
+     {
+      "type": "travel",
+      "start": "09:35",
+      "end": "10:00",
+      "from": "home",
+      "to": "office"
+     },
+     {
+      "type": "meeting",
+      "start": "10:00",
+      "end": "11:00",
+      "id": "thu-1"
+     },
+     {
+      "type": "free",
+      "start": "11:00",
+      "end": "14:00"
+     },
+     {
+      "type": "meeting",
+      "start": "14:00",
+      "end": "15:00",
+      "id": "thu-2"
+     },
+     {
+      "type": "travel",
+      "start": "15:00",
+      "end": "15:25",
+      "from": "office",
+      "to": "home"
+     }
+    ]
+   },
+   "after": {
+    "leave_home": "09:35",
+    "home_at": "15:25",
+    "travel_min": 50,
+    "dead_min": 0,
+    "free_min": 180,
+    "events": [
+     {
+      "id": "thu-1",
+      "start": "10:00",
+      "end": "11:00",
+      "place": "office"
+     },
+     {
+      "id": "thu-2",
+      "start": "14:00",
+      "end": "15:00",
+      "place": "office"
+     }
+    ],
+    "segments": [
+     {
+      "type": "travel",
+      "start": "09:35",
+      "end": "10:00",
+      "from": "home",
+      "to": "office"
+     },
+     {
+      "type": "meeting",
+      "start": "10:00",
+      "end": "11:00",
+      "id": "thu-1"
+     },
+     {
+      "type": "free",
+      "start": "11:00",
+      "end": "14:00"
+     },
+     {
+      "type": "meeting",
+      "start": "14:00",
+      "end": "15:00",
+      "id": "thu-2"
+     },
+     {
+      "type": "travel",
+      "start": "15:00",
+      "end": "15:25",
+      "from": "office",
+      "to": "home"
+     }
+    ]
+   },
+   "moves": [],
+   "saved_min": 0,
+   "potential": false
+  },
+  "2027-10-15": {
+   "date": "2027-10-15",
+   "before": {
+    "leave_home": "10:10",
+    "home_at": "16:40",
+    "travel_min": 80,
+    "dead_min": 0,
+    "free_min": 160,
+    "events": [
+     {
+      "id": "fri-1",
+      "start": "10:30",
+      "end": "11:30",
+      "place": "ritual"
+     },
+     {
+      "id": "fri-2",
+      "start": "13:00",
+      "end": "13:45",
+      "place": "zuni"
+     },
+     {
+      "id": "fri-3",
+      "start": "15:30",
+      "end": "16:15",
+      "place": "fidi"
+     }
+    ],
+    "segments": [
+     {
+      "type": "travel",
+      "start": "10:10",
+      "end": "10:30",
+      "from": "home",
+      "to": "ritual"
+     },
+     {
+      "type": "meeting",
+      "start": "10:30",
+      "end": "11:30",
+      "id": "fri-1"
+     },
+     {
+      "type": "travel",
+      "start": "11:30",
+      "end": "11:45",
+      "from": "ritual",
+      "to": "zuni"
+     },
+     {
+      "type": "free",
+      "start": "11:45",
+      "end": "13:00"
+     },
+     {
+      "type": "meeting",
+      "start": "13:00",
+      "end": "13:45",
+      "id": "fri-2"
+     },
+     {
+      "type": "travel",
+      "start": "13:45",
+      "end": "14:05",
+      "from": "zuni",
+      "to": "fidi"
+     },
+     {
+      "type": "free",
+      "start": "14:05",
+      "end": "15:30"
+     },
+     {
+      "type": "meeting",
+      "start": "15:30",
+      "end": "16:15",
+      "id": "fri-3"
+     },
+     {
+      "type": "travel",
+      "start": "16:15",
+      "end": "16:40",
+      "from": "fidi",
+      "to": "home"
+     }
+    ]
+   },
+   "after": {
+    "leave_home": "09:10",
+    "home_at": "15:25",
+    "travel_min": 75,
+    "dead_min": 15,
+    "free_min": 135,
+    "events": [
+     {
+      "id": "fri-1",
+      "start": "09:30",
+      "end": "10:30",
+      "place": "ritual"
+     },
+     {
+      "id": "fri-2",
+      "start": "13:00",
+      "end": "13:45",
+      "place": "zuni"
+     },
+     {
+      "id": "fri-3",
+      "start": "14:15",
+      "end": "15:00",
+      "place": "office"
+     }
+    ],
+    "segments": [
+     {
+      "type": "travel",
+      "start": "09:10",
+      "end": "09:30",
+      "from": "home",
+      "to": "ritual"
+     },
+     {
+      "type": "meeting",
+      "start": "09:30",
+      "end": "10:30",
+      "id": "fri-1"
+     },
+     {
+      "type": "travel",
+      "start": "10:30",
+      "end": "10:45",
+      "from": "ritual",
+      "to": "zuni"
+     },
+     {
+      "type": "free",
+      "start": "10:45",
+      "end": "13:00"
+     },
+     {
+      "type": "meeting",
+      "start": "13:00",
+      "end": "13:45",
+      "id": "fri-2"
+     },
+     {
+      "type": "travel",
+      "start": "13:45",
+      "end": "14:00",
+      "from": "zuni",
+      "to": "office"
+     },
+     {
+      "type": "dead",
+      "start": "14:00",
+      "end": "14:15"
+     },
+     {
+      "type": "meeting",
+      "start": "14:15",
+      "end": "15:00",
+      "id": "fri-3"
+     },
+     {
+      "type": "travel",
+      "start": "15:00",
+      "end": "15:25",
+      "from": "office",
+      "to": "home"
+     }
+    ]
+   },
+   "moves": [
+    {
+     "id": "fri-1",
+     "person": "Dev Shah",
+     "from_start": "10:30",
+     "to_start": "09:30",
+     "from_place": "ritual",
+     "to_place": "ritual"
+    },
+    {
+     "id": "fri-3",
+     "person": "Ben Carter",
+     "from_start": "15:30",
+     "to_start": "14:15",
+     "from_place": "fidi",
+     "to_place": "office"
+    }
+   ],
+   "saved_min": 75,
+   "potential": true
+  }
+ },
+ "calls": [],
+ "mode": "mock",
+ "confirmed": {},
+ "_fixture": {
+  "note": "Offline fixture for web/index.html. combos = Tuesday re-solves after simulated calls (counter = proposed + 30 min).",
+  "combos": {
+   "": {
+    "after": {
+     "leave_home": "09:10",
+     "home_at": "16:05",
+     "travel_min": 80,
+     "dead_min": 35,
+     "free_min": 45,
+     "events": [
+      {
+       "id": "tue-1",
+       "start": "09:30",
+       "end": "10:15",
+       "place": "ritual"
+      },
+      {
+       "id": "tue-2",
+       "start": "11:00",
+       "end": "12:00",
+       "place": "office"
+      },
+      {
+       "id": "tue-3",
+       "start": "12:00",
+       "end": "13:00",
+       "place": "office"
+      },
+      {
+       "id": "tue-5",
+       "start": "13:15",
+       "end": "14:00",
+       "place": "fidi"
+      },
+      {
+       "id": "tue-4",
+       "start": "15:00",
+       "end": "15:45",
+       "place": "ritual"
+      }
+     ],
+     "segments": [
+      {
+       "type": "travel",
+       "start": "09:10",
+       "end": "09:30",
+       "from": "home",
+       "to": "ritual"
+      },
+      {
+       "type": "meeting",
+       "start": "09:30",
+       "end": "10:15",
+       "id": "tue-1"
+      },
+      {
+       "type": "travel",
+       "start": "10:15",
+       "end": "10:30",
+       "from": "ritual",
+       "to": "office"
+      },
+      {
+       "type": "dead",
+       "start": "10:30",
+       "end": "11:00"
+      },
+      {
+       "type": "meeting",
+       "start": "11:00",
+       "end": "12:00",
+       "id": "tue-2"
+      },
+      {
+       "type": "meeting",
+       "start": "12:00",
+       "end": "13:00",
+       "id": "tue-3"
+      },
+      {
+       "type": "travel",
+       "start": "13:00",
+       "end": "13:10",
+       "from": "office",
+       "to": "fidi"
+      },
+      {
+       "type": "dead",
+       "start": "13:10",
+       "end": "13:15"
+      },
+      {
+       "type": "meeting",
+       "start": "13:15",
+       "end": "14:00",
+       "id": "tue-5"
+      },
+      {
+       "type": "travel",
+       "start": "14:00",
+       "end": "14:15",
+       "from": "fidi",
+       "to": "ritual"
+      },
+      {
+       "type": "free",
+       "start": "14:15",
+       "end": "15:00"
+      },
+      {
+       "type": "meeting",
+       "start": "15:00",
+       "end": "15:45",
+       "id": "tue-4"
+      },
+      {
+       "type": "travel",
+       "start": "15:45",
+       "end": "16:05",
+       "from": "ritual",
+       "to": "home"
+      }
+     ]
+    },
+    "moves": [
+     {
+      "id": "tue-3",
+      "person": "Raj Patel",
+      "from_start": "13:15",
+      "to_start": "12:00",
+      "from_place": "zuni",
+      "to_place": "office"
+     },
+     {
+      "id": "tue-5",
+      "person": "Dana Whitfield",
+      "from_start": "17:30",
+      "to_start": "13:15",
+      "from_place": "fidi",
+      "to_place": "fidi"
+     }
+    ],
+    "saved_min": 155,
+    "potential": true
+   },
+   "tue-3": {
+    "after": {
+     "leave_home": "09:10",
+     "home_at": "16:05",
+     "travel_min": 80,
+     "dead_min": 80,
+     "free_min": 0,
+     "events": [
+      {
+       "id": "tue-1",
+       "start": "09:30",
+       "end": "10:15",
+       "place": "ritual"
+      },
+      {
+       "id": "tue-2",
+       "start": "11:00",
+       "end": "12:00",
+       "place": "office"
+      },
+      {
+       "id": "tue-3",
+       "start": "12:30",
+       "end": "13:30",
+       "place": "office"
+      },
+      {
+       "id": "tue-5",
+       "start": "13:45",
+       "end": "14:30",
+       "place": "fidi"
+      },
+      {
+       "id": "tue-4",
+       "start": "15:00",
+       "end": "15:45",
+       "place": "ritual"
+      }
+     ],
+     "segments": [
+      {
+       "type": "travel",
+       "start": "09:10",
+       "end": "09:30",
+       "from": "home",
+       "to": "ritual"
+      },
+      {
+       "type": "meeting",
+       "start": "09:30",
+       "end": "10:15",
+       "id": "tue-1"
+      },
+      {
+       "type": "travel",
+       "start": "10:15",
+       "end": "10:30",
+       "from": "ritual",
+       "to": "office"
+      },
+      {
+       "type": "dead",
+       "start": "10:30",
+       "end": "11:00"
+      },
+      {
+       "type": "meeting",
+       "start": "11:00",
+       "end": "12:00",
+       "id": "tue-2"
+      },
+      {
+       "type": "dead",
+       "start": "12:00",
+       "end": "12:30"
+      },
+      {
+       "type": "meeting",
+       "start": "12:30",
+       "end": "13:30",
+       "id": "tue-3"
+      },
+      {
+       "type": "travel",
+       "start": "13:30",
+       "end": "13:40",
+       "from": "office",
+       "to": "fidi"
+      },
+      {
+       "type": "dead",
+       "start": "13:40",
+       "end": "13:45"
+      },
+      {
+       "type": "meeting",
+       "start": "13:45",
+       "end": "14:30",
+       "id": "tue-5"
+      },
+      {
+       "type": "travel",
+       "start": "14:30",
+       "end": "14:45",
+       "from": "fidi",
+       "to": "ritual"
+      },
+      {
+       "type": "dead",
+       "start": "14:45",
+       "end": "15:00"
+      },
+      {
+       "type": "meeting",
+       "start": "15:00",
+       "end": "15:45",
+       "id": "tue-4"
+      },
+      {
+       "type": "travel",
+       "start": "15:45",
+       "end": "16:05",
+       "from": "ritual",
+       "to": "home"
+      }
+     ]
+    },
+    "moves": [
+     {
+      "id": "tue-3",
+      "person": "Raj Patel",
+      "from_start": "13:15",
+      "to_start": "12:30",
+      "from_place": "zuni",
+      "to_place": "office"
+     },
+     {
+      "id": "tue-5",
+      "person": "Dana Whitfield",
+      "from_start": "17:30",
+      "to_start": "13:45",
+      "from_place": "fidi",
+      "to_place": "fidi"
+     }
+    ],
+    "saved_min": 155,
+    "potential": true
+   },
+   "tue-5": {
+    "after": {
+     "leave_home": "09:10",
+     "home_at": "16:05",
+     "travel_min": 80,
+     "dead_min": 80,
+     "free_min": 0,
+     "events": [
+      {
+       "id": "tue-1",
+       "start": "09:30",
+       "end": "10:15",
+       "place": "ritual"
+      },
+      {
+       "id": "tue-2",
+       "start": "11:00",
+       "end": "12:00",
+       "place": "office"
+      },
+      {
+       "id": "tue-3",
+       "start": "12:00",
+       "end": "13:00",
+       "place": "office"
+      },
+      {
+       "id": "tue-5",
+       "start": "13:45",
+       "end": "14:30",
+       "place": "fidi"
+      },
+      {
+       "id": "tue-4",
+       "start": "15:00",
+       "end": "15:45",
+       "place": "ritual"
+      }
+     ],
+     "segments": [
+      {
+       "type": "travel",
+       "start": "09:10",
+       "end": "09:30",
+       "from": "home",
+       "to": "ritual"
+      },
+      {
+       "type": "meeting",
+       "start": "09:30",
+       "end": "10:15",
+       "id": "tue-1"
+      },
+      {
+       "type": "travel",
+       "start": "10:15",
+       "end": "10:30",
+       "from": "ritual",
+       "to": "office"
+      },
+      {
+       "type": "dead",
+       "start": "10:30",
+       "end": "11:00"
+      },
+      {
+       "type": "meeting",
+       "start": "11:00",
+       "end": "12:00",
+       "id": "tue-2"
+      },
+      {
+       "type": "meeting",
+       "start": "12:00",
+       "end": "13:00",
+       "id": "tue-3"
+      },
+      {
+       "type": "travel",
+       "start": "13:00",
+       "end": "13:10",
+       "from": "office",
+       "to": "fidi"
+      },
+      {
+       "type": "dead",
+       "start": "13:10",
+       "end": "13:45"
+      },
+      {
+       "type": "meeting",
+       "start": "13:45",
+       "end": "14:30",
+       "id": "tue-5"
+      },
+      {
+       "type": "travel",
+       "start": "14:30",
+       "end": "14:45",
+       "from": "fidi",
+       "to": "ritual"
+      },
+      {
+       "type": "dead",
+       "start": "14:45",
+       "end": "15:00"
+      },
+      {
+       "type": "meeting",
+       "start": "15:00",
+       "end": "15:45",
+       "id": "tue-4"
+      },
+      {
+       "type": "travel",
+       "start": "15:45",
+       "end": "16:05",
+       "from": "ritual",
+       "to": "home"
+      }
+     ]
+    },
+    "moves": [
+     {
+      "id": "tue-3",
+      "person": "Raj Patel",
+      "from_start": "13:15",
+      "to_start": "12:00",
+      "from_place": "zuni",
+      "to_place": "office"
+     },
+     {
+      "id": "tue-5",
+      "person": "Dana Whitfield",
+      "from_start": "17:30",
+      "to_start": "13:45",
+      "from_place": "fidi",
+      "to_place": "fidi"
+     }
+    ],
+    "saved_min": 155,
+    "potential": true
+   },
+   "tue-3+tue-5": {
+    "after": {
+     "leave_home": "09:10",
+     "home_at": "16:05",
+     "travel_min": 80,
+     "dead_min": 80,
+     "free_min": 0,
+     "events": [
+      {
+       "id": "tue-1",
+       "start": "09:30",
+       "end": "10:15",
+       "place": "ritual"
+      },
+      {
+       "id": "tue-2",
+       "start": "11:00",
+       "end": "12:00",
+       "place": "office"
+      },
+      {
+       "id": "tue-3",
+       "start": "12:30",
+       "end": "13:30",
+       "place": "office"
+      },
+      {
+       "id": "tue-5",
+       "start": "13:45",
+       "end": "14:30",
+       "place": "fidi"
+      },
+      {
+       "id": "tue-4",
+       "start": "15:00",
+       "end": "15:45",
+       "place": "ritual"
+      }
+     ],
+     "segments": [
+      {
+       "type": "travel",
+       "start": "09:10",
+       "end": "09:30",
+       "from": "home",
+       "to": "ritual"
+      },
+      {
+       "type": "meeting",
+       "start": "09:30",
+       "end": "10:15",
+       "id": "tue-1"
+      },
+      {
+       "type": "travel",
+       "start": "10:15",
+       "end": "10:30",
+       "from": "ritual",
+       "to": "office"
+      },
+      {
+       "type": "dead",
+       "start": "10:30",
+       "end": "11:00"
+      },
+      {
+       "type": "meeting",
+       "start": "11:00",
+       "end": "12:00",
+       "id": "tue-2"
+      },
+      {
+       "type": "dead",
+       "start": "12:00",
+       "end": "12:30"
+      },
+      {
+       "type": "meeting",
+       "start": "12:30",
+       "end": "13:30",
+       "id": "tue-3"
+      },
+      {
+       "type": "travel",
+       "start": "13:30",
+       "end": "13:40",
+       "from": "office",
+       "to": "fidi"
+      },
+      {
+       "type": "dead",
+       "start": "13:40",
+       "end": "13:45"
+      },
+      {
+       "type": "meeting",
+       "start": "13:45",
+       "end": "14:30",
+       "id": "tue-5"
+      },
+      {
+       "type": "travel",
+       "start": "14:30",
+       "end": "14:45",
+       "from": "fidi",
+       "to": "ritual"
+      },
+      {
+       "type": "dead",
+       "start": "14:45",
+       "end": "15:00"
+      },
+      {
+       "type": "meeting",
+       "start": "15:00",
+       "end": "15:45",
+       "id": "tue-4"
+      },
+      {
+       "type": "travel",
+       "start": "15:45",
+       "end": "16:05",
+       "from": "ritual",
+       "to": "home"
+      }
+     ]
+    },
+    "moves": [
+     {
+      "id": "tue-3",
+      "person": "Raj Patel",
+      "from_start": "13:15",
+      "to_start": "12:30",
+      "from_place": "zuni",
+      "to_place": "office"
+     },
+     {
+      "id": "tue-5",
+      "person": "Dana Whitfield",
+      "from_start": "17:30",
+      "to_start": "13:45",
+      "from_place": "fidi",
+      "to_place": "fidi"
+     }
+    ],
+    "saved_min": 155,
+    "potential": false
+   }
+  }
+ }
+}

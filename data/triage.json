@@ -1,0 +1,164 @@
+{
+ "model": "gpt-5.6-luna",
+ "key": "8d60d9475bf785e8",
+ "generated_at": "2026-10-11T23:06:57+00:00",
+ "verdicts": {
+  "mon-1": {
+   "worth_calling": false,
+   "movable": "no",
+   "reason": "Marked fixed",
+   "source": "rule"
+  },
+  "mon-2": {
+   "worth_calling": false,
+   "movable": "yes",
+   "reason": "No time gained; asking would not get Chris home earlier.",
+   "source": "llm"
+  },
+  "mon-3": {
+   "worth_calling": false,
+   "movable": "yes",
+   "reason": "No time gained; asking would not get Chris home earlier.",
+   "source": "llm"
+  },
+  "mon-4": {
+   "worth_calling": false,
+   "movable": "yes",
+   "reason": "Other moves fell away; too little left to gain",
+   "source": "rule"
+  },
+  "mon-5": {
+   "worth_calling": false,
+   "movable": "no",
+   "reason": "Four attendees make rescheduling socially costly despite the large potential gain.",
+   "source": "llm"
+  },
+  "tue-1": {
+   "worth_calling": false,
+   "movable": "yes",
+   "reason": "No time gained; asking would not get Chris home earlier.",
+   "source": "llm"
+  },
+  "tue-2": {
+   "worth_calling": false,
+   "movable": "no",
+   "reason": "Marked fixed",
+   "source": "rule"
+  },
+  "tue-3": {
+   "worth_calling": true,
+   "movable": "yes",
+   "reason": "Flexible vendor rep and lunch move would gain 45 minutes.",
+   "source": "llm"
+  },
+  "tue-4": {
+   "worth_calling": false,
+   "movable": "no",
+   "reason": "Marked fixed",
+   "source": "rule"
+  },
+  "tue-5": {
+   "worth_calling": true,
+   "movable": "yes",
+   "reason": "Close friend is highly flexible; moving coffee gains 145 minutes.",
+   "source": "llm"
+  },
+  "wed-1": {
+   "worth_calling": false,
+   "movable": "yes",
+   "reason": "No time gained; asking would not get Chris home earlier.",
+   "source": "llm"
+  },
+  "wed-2": {
+   "worth_calling": false,
+   "movable": "no",
+   "reason": "Marked fixed",
+   "source": "rule"
+  },
+  "wed-3": {
+   "worth_calling": false,
+   "movable": "no",
+   "reason": "Potential seed lead; do not risk goodwill by requesting a change.",
+   "source": "llm"
+  },
+  "wed-4": {
+   "worth_calling": false,
+   "movable": "yes",
+   "reason": "The proposed move gains no time; avoid an unnecessary scheduling request.",
+   "source": "llm"
+  },
+  "wed-5": {
+   "worth_calling": true,
+   "movable": "yes",
+   "reason": "Prospective customer is flexible, and moving coffee gains 45 minutes.",
+   "source": "llm"
+  },
+  "wed-6": {
+   "worth_calling": true,
+   "movable": "yes",
+   "reason": "Easygoing friend and earlier dinner would gain 70 minutes.",
+   "source": "llm"
+  },
+  "thu-1": {
+   "worth_calling": false,
+   "movable": "no",
+   "reason": "Marked fixed",
+   "source": "rule"
+  },
+  "thu-2": {
+   "worth_calling": false,
+   "movable": "yes",
+   "reason": "Moving 30 minutes earlier gains no meaningful time overall.",
+   "source": "llm"
+  },
+  "thu-3": {
+   "worth_calling": false,
+   "movable": "yes",
+   "reason": "Changing location gains no time; avoid an unnecessary request.",
+   "source": "llm"
+  },
+  "thu-4": {
+   "worth_calling": false,
+   "movable": "no",
+   "reason": "Marked fixed",
+   "source": "rule"
+  },
+  "thu-5": {
+   "worth_calling": true,
+   "movable": "maybe",
+   "reason": "Keith resists changes, but the 55-minute gain warrants one polite call.",
+   "source": "llm"
+  },
+  "thu-6": {
+   "worth_calling": true,
+   "movable": "yes",
+   "reason": "Flexible accountant and earlier meeting would gain 80 minutes.",
+   "source": "llm"
+  },
+  "fri-1": {
+   "worth_calling": false,
+   "movable": "yes",
+   "reason": "Changing location gains no time; avoid an unnecessary request.",
+   "source": "llm"
+  },
+  "fri-2": {
+   "worth_calling": false,
+   "movable": "no",
+   "reason": "Marked fixed",
+   "source": "rule"
+  },
+  "fri-3": {
+   "worth_calling": false,
+   "movable": "yes",
+   "reason": "No time gained; asking would not get Chris home earlier.",
+   "source": "llm"
+  },
+  "fri-4": {
+   "worth_calling": true,
+   "movable": "yes",
+   "reason": "Relaxed mentor is likely flexible, and moving coffee gains 75 minutes.",
+   "source": "llm"
+  }
+ },
+ "context": {}
+}

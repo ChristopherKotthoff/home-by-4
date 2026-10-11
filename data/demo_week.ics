@@ -1,0 +1,381 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//HomeBy4//demo week//EN
+CALSCALE:GREGORIAN
+X-WR-CALNAME:HomeBy4 demo week
+X-WR-TIMEZONE:America/Los_Angeles
+BEGIN:VTIMEZONE
+TZID:America/Los_Angeles
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+TZNAME:PDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0800
+TZNAME:PST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:mon-1@homeby4.demo
+DTSTAMP:20270901T000000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20271011T090000
+DTEND;TZID=America/Los_Angeles:20271011T093000
+SUMMARY:Team standup (weekly)
+LOCATION:Office · South Park\, SoMa
+DESCRIPTION:HomeBy4 demo (synthetic). Fictional person: Ava Brooks. Fixed m
+ eeting. Weekly team standup at the office\, cannot move.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:mon-2@homeby4.demo
+DTSTAMP:20270901T000000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20271011T103000
+DTEND;TZID=America/Los_Angeles:20271011T111500
+SUMMARY:Coffee: Priya Nair (junior designer)
+LOCATION:Ritual Coffee Roasters · Valencia St
+DESCRIPTION:HomeBy4 demo (synthetic). Fictional person: Priya Nair. Flexibl
+ e meeting. Priya is a junior designer asking for feedback on her portfolio
+ \; easygoing\, usually fine with a different time.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:mon-3@homeby4.demo
+DTSTAMP:20270901T000000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20271011T123000
+DTEND;TZID=America/Los_Angeles:20271011T133000
+SUMMARY:Lunch: Victor Alvarez (friend)
+LOCATION:Fort Mason Center · Marina
+DESCRIPTION:HomeBy4 demo (synthetic). Fictional person: Victor Alvarez. Fle
+ xible meeting. Old friend from college\, casual lunch\; he works remotely 
+ so his day is open.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:mon-4@homeby4.demo
+DTSTAMP:20270901T000000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20271011T151500
+DTEND;TZID=America/Los_Angeles:20271011T154500
+SUMMARY:Call: Helen Okafor (recruiter)
+LOCATION:Phone / video call
+DESCRIPTION:HomeBy4 demo (synthetic). Fictional person: Helen Okafor. Flexi
+ ble meeting. Recruiter checking in about a senior engineer candidate\; a p
+ hone call\, location does not matter.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:mon-5@homeby4.demo
+DTSTAMP:20270901T000000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20271011T163000
+DTEND;TZID=America/Los_Angeles:20271011T171500
+SUMMARY:Demo: Gordon Pike (vendor rep)
+LOCATION:Piccino Cafe · Dogpatch
+DESCRIPTION:HomeBy4 demo (synthetic). Fictional person: Gordon Pike. Flexib
+ le meeting. Vendor rep showing a new analytics tool\; he travels between c
+ lients so his afternoon is fairly open.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:tue-1@homeby4.demo
+DTSTAMP:20270901T000000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20271012T093000
+DTEND;TZID=America/Los_Angeles:20271012T101500
+SUMMARY:Coffee: Jun Takahashi (junior engineer)
+LOCATION:Ritual Coffee Roasters · Valencia St
+DESCRIPTION:HomeBy4 demo (synthetic). Fictional person: Jun Takahashi. Flex
+ ible meeting. Jun is a junior engineer who wants career advice\; keep it s
+ hort and friendly.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:tue-2@homeby4.demo
+DTSTAMP:20270901T000000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20271012T110000
+DTEND;TZID=America/Los_Angeles:20271012T120000
+SUMMARY:Sprint planning (team)
+LOCATION:Office · South Park\, SoMa
+DESCRIPTION:HomeBy4 demo (synthetic). Fictional person: Ava Brooks. Fixed m
+ eeting. Team sprint planning at the office\, cannot move.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:tue-3@homeby4.demo
+DTSTAMP:20270901T000000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20271012T131500
+DTEND;TZID=America/Los_Angeles:20271012T141500
+SUMMARY:Lunch: Raj Patel (vendor rep)
+LOCATION:Blue Bottle Coffee · Hayes Valley
+DESCRIPTION:HomeBy4 demo (synthetic). Fictional person: Raj Patel. Flexible
+  meeting. Raj is a vendor rep talking through next year's contract renewal
+ \; flexible\, likes lunch near SoMa.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:tue-4@homeby4.demo
+DTSTAMP:20270901T000000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20271012T151500
+DTEND;TZID=America/Los_Angeles:20271012T160000
+SUMMARY:Customer demo: Lena Hoffmann
+LOCATION:Ritual Coffee Roasters · Valencia St
+DESCRIPTION:HomeBy4 demo (synthetic). Fictional person: Lena Hoffmann. Fixe
+ d meeting. Customer demo for Lena\, already confirmed with her team\, cann
+ ot move.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:tue-5@homeby4.demo
+DTSTAMP:20270901T000000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20271012T171500
+DTEND;TZID=America/Los_Angeles:20271012T180000
+SUMMARY:Coffee: Olin (friend)
+LOCATION:Ferry Building Marketplace
+DESCRIPTION:HomeBy4 demo (synthetic). Fictional person: Olin. Flexible meet
+ ing. Olin is a close friend\; catching up over coffee. Easygoing\, and hap
+ py to meet anywhere near the Mission.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:wed-1@homeby4.demo
+DTSTAMP:20270901T000000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20271013T083000
+DTEND;TZID=America/Los_Angeles:20271013T091500
+SUMMARY:Breakfast: Tomas Ferreira (mentor)
+LOCATION:Presidio Main Post
+DESCRIPTION:HomeBy4 demo (synthetic). Fictional person: Tomas Ferreira. Fle
+ xible meeting. Tomas is a long-time mentor\; monthly breakfast\, mostly ab
+ out hiring and focus.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:wed-2@homeby4.demo
+DTSTAMP:20270901T000000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20271013T103000
+DTEND;TZID=America/Los_Angeles:20271013T113000
+SUMMARY:Check-up: Dr. Amelia Reyes
+LOCATION:UCSF Parnassus Heights
+DESCRIPTION:HomeBy4 demo (synthetic). Fictional person: Dr. Amelia Reyes. F
+ ixed meeting. Annual check-up\, appointment booked weeks ago\, cannot move
+ .
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:wed-3@homeby4.demo
+DTSTAMP:20270901T000000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20271013T130000
+DTEND;TZID=America/Los_Angeles:20271013T134500
+SUMMARY:Coffee: Nadia Haddad (VC partner)
+LOCATION:101 California St · FiDi
+DESCRIPTION:HomeBy4 demo (synthetic). Fictional person: Nadia Haddad. Flexi
+ ble meeting. Nadia is a VC partner we hope will lead the seed\; keep it li
+ ght\, she is busy and often counters.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:wed-4@homeby4.demo
+DTSTAMP:20270901T000000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20271013T141500
+DTEND;TZID=America/Los_Angeles:20271013T144500
+SUMMARY:Call: Ingrid Solberg (VC assistant)
+LOCATION:Phone / video call
+DESCRIPTION:HomeBy4 demo (synthetic). Fictional person: Ingrid Solberg. Fle
+ xible meeting. Ingrid runs the calendar for a VC partner and is arranging 
+ an intro\; quick and efficient.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:wed-5@homeby4.demo
+DTSTAMP:20270901T000000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20271013T161500
+DTEND;TZID=America/Los_Angeles:20271013T170000
+SUMMARY:Coffee: Olivia Bennett (account exec)
+LOCATION:Fort Mason Center · Marina
+DESCRIPTION:HomeBy4 demo (synthetic). Fictional person: Olivia Bennett. Fle
+ xible meeting. Olivia is an account executive at a prospective customer\; 
+ quick intro chat\, she is happy to meet closer to the Mission.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:wed-6@homeby4.demo
+DTSTAMP:20270901T000000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20271013T180000
+DTEND;TZID=America/Los_Angeles:20271013T190000
+SUMMARY:Dinner: Marcus Lindqvist (friend)
+LOCATION:Tartine Manufactory · Mission
+DESCRIPTION:HomeBy4 demo (synthetic). Fictional person: Marcus Lindqvist. F
+ lexible meeting. Dinner with Marcus before he flies out\; easygoing\, love
+ s anything near the Mission.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:thu-1@homeby4.demo
+DTSTAMP:20270901T000000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20271014T083000
+DTEND;TZID=America/Los_Angeles:20271014T090000
+SUMMARY:Team standup
+LOCATION:Office · South Park\, SoMa
+DESCRIPTION:HomeBy4 demo (synthetic). Fictional person: Ava Brooks. Fixed m
+ eeting. Team standup at the office\, cannot move.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:thu-2@homeby4.demo
+DTSTAMP:20270901T000000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20271014T100000
+DTEND;TZID=America/Los_Angeles:20271014T104500
+SUMMARY:Coffee: Ethan Cole (junior developer)
+LOCATION:Ritual Coffee Roasters · Valencia St
+DESCRIPTION:HomeBy4 demo (synthetic). Fictional person: Ethan Cole. Flexibl
+ e meeting. Ethan is a junior developer on a trial project\; friendly\, fle
+ xible.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:thu-3@homeby4.demo
+DTSTAMP:20270901T000000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20271014T120000
+DTEND;TZID=America/Los_Angeles:20271014T130000
+SUMMARY:Lunch: Sofia Marchetti (recruiter)
+LOCATION:Presidio Main Post
+DESCRIPTION:HomeBy4 demo (synthetic). Fictional person: Sofia Marchetti. Fl
+ exible meeting. Sofia is a recruiter pitching two candidates\; likes the P
+ residio but will go wherever is convenient.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:thu-4@homeby4.demo
+DTSTAMP:20270901T000000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20271014T133000
+DTEND;TZID=America/Los_Angeles:20271014T150000
+SUMMARY:Board meeting
+LOCATION:101 California St · FiDi
+DESCRIPTION:HomeBy4 demo (synthetic). Fictional person: Grace Whelan. Fixed
+  meeting. Quarterly board meeting\, cannot move.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:thu-5@homeby4.demo
+DTSTAMP:20270901T000000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20271014T154500
+DTEND;TZID=America/Los_Angeles:20271014T163000
+SUMMARY:Coffee: Keith Brandt (landlord)
+LOCATION:Piccino Cafe · Dogpatch
+DESCRIPTION:HomeBy4 demo (synthetic). Fictional person: Keith Brandt. Flexi
+ ble meeting. Keith is the landlord\, wants to talk about the lease renewal
+ \; tends to say no to changes.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:thu-6@homeby4.demo
+DTSTAMP:20270901T000000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20271014T171500
+DTEND;TZID=America/Los_Angeles:20271014T180000
+SUMMARY:Coffee: Bao Tran (accountant)
+LOCATION:101 California St · FiDi
+DESCRIPTION:HomeBy4 demo (synthetic). Fictional person: Bao Tran. Flexible 
+ meeting. Bao is the accountant\, going over the quarterly tax estimate\; f
+ lexible on timing.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:fri-1@homeby4.demo
+DTSTAMP:20270901T000000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20271015T093000
+DTEND;TZID=America/Los_Angeles:20271015T101500
+SUMMARY:Coffee: Priya Nair (junior designer)
+LOCATION:Sightglass Coffee · SoMa
+DESCRIPTION:HomeBy4 demo (synthetic). Fictional person: Priya Nair. Flexibl
+ e meeting. Priya wants feedback on the redesign\; friendly and flexible.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:fri-2@homeby4.demo
+DTSTAMP:20270901T000000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20271015T113000
+DTEND;TZID=America/Los_Angeles:20271015T123000
+SUMMARY:Weekly all-hands
+LOCATION:Office · South Park\, SoMa
+DESCRIPTION:HomeBy4 demo (synthetic). Fictional person: Ava Brooks. Fixed m
+ eeting. Weekly all-hands\, cannot move.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:fri-3@homeby4.demo
+DTSTAMP:20270901T000000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20271015T124500
+DTEND;TZID=America/Los_Angeles:20271015T131500
+SUMMARY:Call: Raj Patel (vendor rep)
+LOCATION:Phone / video call
+DESCRIPTION:HomeBy4 demo (synthetic). Fictional person: Raj Patel. Flexible
+  meeting. Raj wants to wrap up the contract questions\; a short phone call
+ .
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:fri-4@homeby4.demo
+DTSTAMP:20270901T000000Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20271015T150000
+DTEND;TZID=America/Los_Angeles:20271015T154500
+SUMMARY:Coffee: Tomas Ferreira (mentor)
+LOCATION:Piccino Cafe · Dogpatch
+DESCRIPTION:HomeBy4 demo (synthetic). Fictional person: Tomas Ferreira. Fle
+ xible meeting. Tomas\, the mentor\, a relaxed Friday catch-up.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR

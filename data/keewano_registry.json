@@ -1,0 +1,134 @@
+{
+ "eventTypes": [
+  {
+   "eventTypeId": 2000,
+   "name": "Person",
+   "dataType": "string"
+  },
+  {
+   "eventTypeId": 2001,
+   "name": "Role",
+   "dataType": "string"
+  },
+  {
+   "eventTypeId": 2002,
+   "name": "MeetingTitle",
+   "dataType": "string"
+  },
+  {
+   "eventTypeId": 2003,
+   "name": "Weekday",
+   "dataType": "string"
+  },
+  {
+   "eventTypeId": 2004,
+   "name": "ProposedStart",
+   "dataType": "string"
+  },
+  {
+   "eventTypeId": 2005,
+   "name": "ProposedShiftMin",
+   "dataType": "uint"
+  },
+  {
+   "eventTypeId": 2006,
+   "name": "ProposedShiftMinDir",
+   "dataType": "string"
+  },
+  {
+   "eventTypeId": 2007,
+   "name": "Accepted",
+   "dataType": "bool"
+  },
+  {
+   "eventTypeId": 2008,
+   "name": "Countered",
+   "dataType": "bool"
+  },
+  {
+   "eventTypeId": 2009,
+   "name": "MinutesSaved",
+   "dataType": "uint"
+  },
+  {
+   "eventTypeId": 2010,
+   "name": "CallSeconds",
+   "dataType": "uint"
+  },
+  {
+   "eventTypeId": 2011,
+   "name": "CallOutcome",
+   "dataType": "none"
+  },
+  {
+   "eventTypeId": 2012,
+   "name": "Date",
+   "dataType": "string"
+  },
+  {
+   "eventTypeId": 2013,
+   "name": "SavedMin",
+   "dataType": "uint"
+  },
+  {
+   "eventTypeId": 2014,
+   "name": "Moves",
+   "dataType": "uint"
+  },
+  {
+   "eventTypeId": 2015,
+   "name": "HomeBefore",
+   "dataType": "string"
+  },
+  {
+   "eventTypeId": 2016,
+   "name": "HomeAfter",
+   "dataType": "string"
+  },
+  {
+   "eventTypeId": 2017,
+   "name": "DeadMinBefore",
+   "dataType": "uint"
+  },
+  {
+   "eventTypeId": 2018,
+   "name": "DayCompacted",
+   "dataType": "none"
+  },
+  {
+   "eventTypeId": 2019,
+   "name": "MeetingId",
+   "dataType": "string"
+  },
+  {
+   "eventTypeId": 2020,
+   "name": "Reason",
+   "dataType": "string"
+  },
+  {
+   "eventTypeId": 2021,
+   "name": "CallFailed",
+   "dataType": "none"
+  },
+  {
+   "eventTypeId": 2022,
+   "name": "FromStart",
+   "dataType": "string"
+  },
+  {
+   "eventTypeId": 2023,
+   "name": "Mode",
+   "dataType": "string"
+  },
+  {
+   "eventTypeId": 2024,
+   "name": "CallPlaced",
+   "dataType": "none"
+  },
+  {
+   "eventTypeId": 2025,
+   "name": "CallKind",
+   "dataType": "string"
+  }
+ ]
+}

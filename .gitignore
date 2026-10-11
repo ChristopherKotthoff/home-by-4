@@ -1,0 +1,8 @@
+data/events.jsonl
+__pycache__/
+.env
+.DS_Store
+data/calendar_snapshot.json
+data/home.json
+data/travel_cache.json
+data/geocode_cache.json
