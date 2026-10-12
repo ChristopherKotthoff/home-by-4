@@ -344,6 +344,9 @@ def build_inform_instruction(meeting, week, start, place_id):
         "Say exactly: \"%s\"" % line,
         "",
         "What to do:",
+        "0. You must finish that whole sentence, including \"Does that work?\", and then wait for a clear answer. If they talk over you, "
+        "say anything else first (hello, an apology, a question about the connection) or you were cut off, calmly say the whole sentence again. "
+        "Never say Goodbye before you have heard a yes or no to \"Does that work?\".",
         "1. If they say yes or that it works: say \"Great, thank you. Goodbye.\" and nothing more.",
         "2. If they object or are unsure: do not negotiate or offer other times. Say \"Understood, %s will follow up. Goodbye.\"" % owner,
         "3. After saying Goodbye, stop speaking and end the call immediately. If you reach voicemail, hang up without leaving a message.",
@@ -560,7 +563,8 @@ def _ask_system(meeting, week):
         "can only move within %s to %s) and whether these places are fine: %s.\n"
         "Return JSON with: windows = the time ranges [start,end] the USER says they could do on that day (max 3, [] if none; "
         "\"after 4\" means [\"16:00\",\"%s\"]; \"before noon\" means [\"%s\",\"12:00\"]); places_ok = the place ids from the list "
-        "the User accepts ([] if not mentioned, all of them if the User says every place is fine); declined = true only if the User "
+        "the User accepts ([] if not mentioned, all of them if the User says every place is fine or answers the Agent's question about "
+        "the places with a plain yes, sure or fine); declined = true only if the User "
         "refuses or says no other time works. Only what the User said counts, never times only the Agent mentioned.\n%s"
         % (_weekday(meeting["date"]), meeting["date"], meeting.get("title", ""), int(meeting.get("dur", 30)), meeting["start"],
            lo, hi, places, hi, _min_to_hhmm(DAY_LO), _TIME_RULES))
